@@ -30,6 +30,10 @@
     {% endif %}
 
     {{ content_for_header }}
+    {% if request.page_type == 'index' %}
+      {{ 'aurel.css' | asset_url | stylesheet_tag }}
+      <script src="{{ 'aurel.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
   </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
@@ -39,7 +43,11 @@
 
     <div class="page-wrapper">
       <div id="header-group">
-        {% sections 'header-group' %}
+        {% if request.page_type == 'index' %}
+          {% section 'aurel-header' %}
+        {% else %}
+          {% sections 'header-group' %}
+        {% endif %}
       </div>
 
       <script>
@@ -161,7 +169,11 @@
       </main>
 
       <footer>
-        {% sections 'footer-group' %}
+        {% if request.page_type == 'index' %}
+          {% section 'aurel-footer' %}
+        {% else %}
+          {% sections 'footer-group' %}
+        {% endif %}
       </footer>
     </div>
 

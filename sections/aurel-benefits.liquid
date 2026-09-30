@@ -1,0 +1,8 @@
+<section class="au au-benefits" aria-label="Our promises">
+  {% for block in section.blocks %}
+    <div class="au-benefit" {{ block.shopify_attributes }}>{% render 'aurel-icon', icon: block.settings.icon %}<div><h2>{{ block.settings.title | escape }}</h2><p>{{ block.settings.text | escape }}</p></div></div>
+  {% endfor %}
+</section>
+{% schema %}
+{"name":"Aurél store benefits","max_blocks":4,"blocks":[{"type":"benefit","name":"Benefit","settings":[{"type":"select","id":"icon","label":"Icon","options":[{"value":"leaf","label":"Leaf"},{"value":"truck","label":"Shipping"},{"value":"box","label":"Returns"},{"value":"heart","label":"Heart"}],"default":"leaf"},{"type":"text","id":"title","label":"Title","default":"Sustainable materials"},{"type":"text","id":"text","label":"Description","default":"Better for you, kinder to the planet"}]}],"presets":[{"name":"Aurél store benefits"}]}
+{% endschema %}

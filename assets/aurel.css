@@ -1,0 +1,153 @@
+/* Aurél homepage. Scoped so collection, cart and product templates keep their theme styles. */
+.au{--au-paper:#f6f4ef;--au-ink:#292923;--au-muted:#706e66;--au-line:#e5e1d9;box-sizing:border-box;color:var(--au-ink);font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:400;line-height:1.5;background:var(--au-paper);-webkit-font-smoothing:antialiased}
+.au *,.au *::before,.au *::after{box-sizing:border-box}
+.au [hidden]{display:none!important}
+.au h1,.au h2,.au h3,.au p,.au figure,.au blockquote{margin:0}
+.au h1,.au h2,.au h3{font-family:Georgia,'Times New Roman',serif;font-weight:400;color:inherit;letter-spacing:-.045em;line-height:1.04;text-wrap:balance}
+.au a{color:inherit;text-decoration:none}
+.au button,.au input{font:inherit}
+.au button{color:inherit;cursor:pointer}
+.au button:disabled{cursor:wait;opacity:.5}
+.au a:focus-visible,.au button:focus-visible,.au input:focus-visible{outline:2px solid #96714d;outline-offset:5px}
+.au a:hover{text-decoration:none}
+.au-icon{display:block;flex-shrink:0}
+.au-image{display:block;width:100%;height:100%;object-fit:cover}
+.au-eyebrow{font-size:10px;line-height:1.6;letter-spacing:.25em;text-transform:uppercase;color:var(--au-muted)}
+.au-rule{display:block;width:42px;height:1px;background:currentColor;opacity:.6}
+.au-button{display:inline-flex;align-items:center;justify-content:center;gap:13px;min-height:48px;padding:14px 31px;background:#292923;color:#f6f4ef!important;font-size:13px;letter-spacing:.01em;transition:background .2s,transform .2s}
+.au-button:hover{background:#4d4c40;transform:translateY(-2px)}
+.au-button--light{background:#f6f4ef;color:#292923!important}
+.au-button--light:hover{background:#e6e0d3}
+.au-text-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;text-decoration:underline!important;text-underline-offset:4px}
+.au-text-link span{display:inline-block;transition:transform .2s}
+.au-text-link:hover span{transform:translateX(4px)}
+.au-announcement{min-height:32px;background:#292923;color:#e5e1d8;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:7px 7%;font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+.au-announcement-note{font-size:7px;letter-spacing:.04em}
+.au-header{display:flex;align-items:center;justify-content:space-between;gap:30px;min-height:75px;padding:18px 7%;border-bottom:1px solid var(--au-line);position:relative;z-index:10}
+.au-logo{font-family:Georgia,'Times New Roman',serif;font-size:36px;letter-spacing:.16em;line-height:1;white-space:nowrap}
+.au-desktop-nav{display:flex;gap:36px;margin-right:auto;margin-left:10%;font-family:Georgia,'Times New Roman',serif;font-size:13px}
+.au-desktop-nav a{position:relative;padding-block:10px}
+.au-desktop-nav a::after{content:'';position:absolute;bottom:4px;left:0;right:100%;height:1px;background:currentColor;transition:right .2s}
+.au-desktop-nav a:hover::after{right:0}
+.au-header-actions{display:flex;align-items:center;gap:18px}
+.au-header-actions>a,.au-menu-toggle{display:flex;align-items:center;justify-content:center;min-width:28px;min-height:36px}
+.au-cart-link{position:relative}
+.au-cart-link span{display:flex;align-items:center;justify-content:center;min-width:21px;height:21px;padding:0 5px;position:absolute;right:-10px;top:4px;border-radius:50%;background:#292923;color:#fff;font-size:9px}
+.au-menu-toggle{display:none;border:0;padding:0;background:none}
+.au-mobile-nav{position:absolute;top:100%;left:0;right:0;background:var(--au-paper);padding:14px 24px 24px;border-bottom:1px solid var(--au-line);box-shadow:0 15px 20px #29292312}
+.au-mobile-nav a{display:block;padding:14px 0;font-family:Georgia,'Times New Roman',serif;font-size:23px;border-bottom:1px solid var(--au-line)}
+.au-hero{display:grid;grid-template-columns:54.3% 45.7%;min-height:535px}
+.au-hero-photo{position:relative;min-height:535px;overflow:hidden}
+.au-hero-photo>.au-image{position:absolute;inset:0}
+.au-photo-caption{position:absolute;top:20%;left:5%;font-size:10px;line-height:3;letter-spacing:.4em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px #0008}
+.au-hero-content{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:75px 9.7% 55px;background:radial-gradient(ellipse at 100% 95%,#dfd9cb66,transparent 45%),#f6f4ef}
+.au-hero-content>.au-eyebrow{margin-bottom:19px;font-size:9px}
+.au-hero h1{font-size:clamp(44px,5.35vw,88px);line-height:.99;letter-spacing:-.055em;position:relative;z-index:1}
+.au-hero .au-rule{margin-top:23px}
+.au-hero-description{font-size:15px;max-width:360px;line-height:1.5;margin-top:20px!important}
+.au-hero .au-button{margin-top:36px}
+.au-seal{position:absolute;right:7%;top:8%;width:98px;height:98px;border:1px dotted #29292366;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;transform:rotate(15deg)}
+.au-seal span{font-size:7px;letter-spacing:.25em}
+.au-seal b{font:42px Georgia,serif;font-weight:400;line-height:1.2}
+.au-benefits{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:35px 4.8%;border-bottom:1px solid var(--au-line);gap:0}
+.au-benefit{display:flex;gap:18px;align-items:center;justify-content:center;padding:0 22px;border-left:1px solid #cfccc2}
+.au-benefit:first-child{border-left:0;padding-left:0}
+.au-benefit:last-child{padding-right:0}
+.au-benefit>.au-icon{width:29px;height:29px}
+.au-benefit h2{font:10px Arial,sans-serif;line-height:1.5;letter-spacing:.075em;text-transform:uppercase;font-weight:600}
+.au-benefit p{font-size:10px;color:var(--au-muted);margin-top:3px}
+.au-grid-section{padding:24px 5% 26px;display:grid;grid-template-columns:23% minmax(0,1fr);gap:2%;border-bottom:1px solid var(--au-line)}
+.au-grid-intro{padding:35px 0 22px;display:flex;align-items:flex-start;flex-direction:column}
+.au-grid-intro h2{font-size:clamp(34px,3.75vw,58px);line-height:1.03}
+.au-grid-description{font-size:15px;max-width:205px;line-height:1.5;margin-top:28px!important}
+.au-grid-intro .au-text-link{margin-top:auto;padding-top:36px}
+.au-card-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:start;min-width:0}
+.au-card{min-width:0}
+.au-card-photo{display:block;aspect-ratio:3/4;overflow:hidden;background:#ddd7ca}
+.au-card-photo .au-image{transition:transform .6s ease}
+.au-card-photo:hover .au-image{transform:scale(1.045)}
+.au-card-info{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:17px 0 10px}
+.au-card h3{font-size:15px;line-height:1.35;letter-spacing:-.025em;text-wrap:initial}
+.au-card h3 a:hover{text-decoration:underline;text-underline-offset:3px}
+.au-card h3 span{padding-left:4px}
+.au-grid-section--categories .au-card-info{padding:16px 10px;background:#fbfaf6;border:1px solid #eeece5;border-top:0}
+.au-grid-section--products{padding-top:23px;padding-bottom:36px}
+.au-grid-section--products .au-card-photo{aspect-ratio: .92}
+.au-price{font-size:12px;color:#5d5b54;margin-top:4px!important}
+.au-product-form{margin:0}
+.au-add{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid #79786f;border-radius:50%;background:none;padding:5px;flex-shrink:0;transition:background .2s,color .2s}
+.au-add .au-icon{width:15px;height:15px}
+.au-add:hover{background:#292923;color:white}
+.au-story{position:relative;min-height:575px;color:#f7f3ea;overflow:hidden;display:flex;align-items:center;background:#3d392e}
+.au-story>.au-image{position:absolute;inset:0;object-position:center}
+.au-story::after{position:absolute;inset:0;content:'';background:linear-gradient(90deg,#17160fe6 0%,#24201677 38%,transparent 70%)}
+.au-story-content{position:relative;z-index:1;width:46%;padding:42px 0 42px 8.4%}
+.au-story .au-eyebrow{color:#dedacf;font-size:10px;letter-spacing:.35em;line-height:2}
+.au-story h2{font-size:clamp(42px,4.8vw,76px);line-height:.99;margin-top:23px}
+.au-story .au-rule{margin:18px 0}
+.au-story-content>p:not(.au-eyebrow){max-width:320px;font-size:15px;line-height:1.5}
+.au-story .au-button{margin-top:26px}
+.au-story-aside{position:absolute;z-index:1;right:2.5%;top:15%;text-align:right;font-size:10px;line-height:3.7;letter-spacing:.4em;text-transform:uppercase;color:#e7dfd2}
+.au-seasonal{display:grid;grid-template-columns:2fr 1fr;gap:2px;padding:8px 5% 0}
+.au-seasonal-main,.au-seasonal-side{position:relative;min-height:294px;overflow:hidden;color:#fff!important;background:#926048}
+.au-seasonal-main>.au-image,.au-seasonal-side>.au-image{position:absolute;inset:0}
+.au-seasonal-main::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#29201588,transparent)}
+.au-seasonal-content{position:relative;z-index:1;padding:45px 42px}
+.au-seasonal h2{font-size:clamp(34px,3.7vw,58px);line-height:1.01}
+.au-seasonal-main p{margin-top:18px;font-size:15px}
+.au-seasonal .au-button{margin-top:30px;font-size:11px;min-height:43px;padding:12px 28px}
+.au-seasonal-side>.au-image{opacity:.35;mix-blend-mode:multiply;object-position:65% center}
+.au-seasonal-side>div{position:relative;padding:80px 32px 25px;z-index:1}
+.au-seasonal-side h3{font-size:clamp(27px,2.65vw,43px);line-height:1.15}
+.au-seasonal-side .au-rule{margin:30px 0 20px}
+.au-seasonal-side .au-eyebrow{color:#f8eee7;font-size:9px}
+.au-community{display:grid;grid-template-columns:1.6fr 1fr;gap:25px;padding:35px 5% 40px;align-items:center;border-bottom:1px solid var(--au-line)}
+.au-community-copy{position:relative;text-align:center;padding:10px 70px}
+.au-community h2{font-size:32px;margin-top:12px}
+.au-community .au-rule{margin:18px auto;width:20px;opacity:.25}
+.au-quotes{min-height:126px}
+.au-quotes blockquote{font:21px/1.5 Georgia,'Times New Roman',serif;letter-spacing:-.025em;max-width:420px;margin:auto}
+.au-quotes figcaption{font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;margin-top:20px}
+.au-quote-prev,.au-quote-next{position:absolute;top:53%;padding:10px;border:0;background:none}
+.au-quote-prev{left:-6px;transform:rotate(180deg)}
+.au-quote-next{right:0}
+.au-community-image{position:relative;aspect-ratio:1.65}
+.au-slide-count{position:absolute;bottom:-27px;right:0;font-size:9px;letter-spacing:.16em}
+.au-grid-section--journal{grid-template-columns:36% minmax(0,1fr);padding-top:23px;padding-bottom:30px;gap:2%}
+.au-grid-section--journal .au-grid-intro{padding-top:20px}
+.au-grid-section--journal .au-grid-intro h2{font-size:clamp(30px,3.25vw,48px);margin-top:16px}
+.au-grid-section--journal .au-card-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.au-grid-section--journal .au-card-photo{aspect-ratio:1.4}
+.au-grid-section--journal .au-card-info{padding-top:13px}
+.au-grid-section--journal .au-card h3{font-size:14px;line-height:1.4}
+.au-card-date{font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:var(--au-muted);margin-top:8px!important}
+.au-newsletter{display:grid;grid-template-columns:1fr 70px 1.5fr 1.6fr;gap:32px;align-items:center;padding:35px 9%;background:#2c2c26;color:#f5f2e9}
+.au-newsletter h2{font-size:34px;line-height:1.05}
+.au-newsletter>p{font-size:12px;line-height:1.8;max-width:280px;color:#dedbd2}
+.au-newsletter-form{margin:0;min-width:0}
+.au-email-field{display:flex;border:1px solid #f5f2e9;min-height:46px}
+.au-email-field input{width:100%;min-width:0;border:0;background:#f5f2e9;color:#292923;padding:13px 16px;border-radius:0;font-size:11px}
+.au-email-field button{width:46px;flex-shrink:0;display:grid;place-items:center;background:transparent;border:0}
+.au-email-field button:hover{background:#ffffff15}
+.au-email-field .au-icon{width:18px;height:18px}
+.au-form-message{font-size:12px;margin-top:10px!important}
+.au-footer{display:grid;grid-template-columns:2.2fr .85fr .85fr 1fr 1.9fr;gap:30px;padding:42px 5% 45px;background:#23241f;color:#dedbd1}
+.au-footer .au-logo{font-size:32px;color:#f8f5ed}
+.au-footer-brand>p{font-size:10px;margin-top:16px}
+.au-social{display:inline-block;margin-top:18px}
+.au-social .au-icon{width:18px;height:18px}
+.au-footer-nav{display:flex;flex-direction:column;align-items:flex-start;gap:5px;font-size:10px;color:#bbb9ae}
+.au-footer-nav h3{font:11px Arial,sans-serif;letter-spacing:0;color:#eeeae0;margin-bottom:6px}
+.au-footer-nav a:hover{color:#fff;text-decoration:underline}
+.au-footer-signoff{border-left:1px solid #646459;padding-left:45px;display:flex;flex-direction:column;justify-content:space-between;gap:30px}
+.au-footer-signoff>div{display:flex;align-items:center;gap:15px}
+.au-footer-signoff .au-icon{width:37px;height:37px;color:#c8c7b9}
+.au-footer-signoff>div p{font-size:8px;letter-spacing:.13em;line-height:2;text-transform:uppercase}
+.au-footer-signoff>p{font-size:10px;color:#bbb9ae}
+.au-visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(min-width:1500px){.au-hero{min-height:680px}.au-hero-photo{min-height:680px}.au-grid-section{padding-top:36px;padding-bottom:36px}.au-story{min-height:720px}.au-seasonal-main,.au-seasonal-side{min-height:380px}.au-seasonal-content{padding-top:65px}.au-seasonal-side>div{padding-top:95px}.au-community{padding-block:48px}.au-card h3{font-size:18px}}
+@media(max-width:1100px){.au-hero,.au-hero-photo{min-height:480px}.au-seal{width:72px;height:72px;top:6%;right:6%}.au-seal b{font-size:30px}.au-seal span{font-size:5px}.au-hero-content{padding:65px 8% 45px}.au-hero-description{font-size:13px}.au-benefits{padding:28px 3%}.au-benefit{padding:0 12px;gap:12px}.au-benefit h2{font-size:9px}.au-benefit p{font-size:9px}.au-grid-section{grid-template-columns:22% minmax(0,1fr);gap:3%}.au-card-grid{gap:10px}.au-grid-intro{padding-right:0}.au-grid-description{font-size:13px}.au-card h3{font-size:13px}.au-card-info{gap:5px}.au-story{min-height:520px}.au-grid-section--journal{grid-template-columns:34% minmax(0,1fr)}.au-community-copy{padding-inline:40px}.au-quotes blockquote{font-size:18px}.au-community h2{font-size:28px}.au-newsletter{grid-template-columns:1fr 1.3fr 1.5fr;padding-inline:6%;gap:26px}.au-newsletter>.au-rule{display:none}.au-footer{gap:20px}.au-footer-signoff{padding-left:24px}}
+@media(max-width:749px){.au-announcement{justify-content:center;padding:8px 14px;font-size:8px;text-align:center;min-height:30px}.au-announcement-note{display:none}.au-header{padding:17px 6%;min-height:72px}.au-logo{font-size:30px}.au-desktop-nav{display:none}.au-menu-toggle{display:flex}.au-header-actions{gap:14px}.au-header-actions .au-icon{width:21px;height:21px}.au-cart-link{margin-right:5px}.au-hero{grid-template-columns:1fr;min-height:0}.au-hero-photo{min-height:0;aspect-ratio:1.3}.au-photo-caption{left:6%;font-size:8px}.au-hero-content{padding:48px 7% 48px}.au-hero h1{font-size:clamp(48px,9vw,68px)}.au-hero-content>.au-eyebrow{font-size:9px;margin-bottom:20px}.au-hero-description{font-size:14px;max-width:350px}.au-hero .au-button{margin-top:26px}.au-seal{top:30px;right:7%;width:76px;height:76px}.au-seal span{font-size:6px}.au-benefits{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px 5%;row-gap:0}.au-benefit{min-height:85px;justify-content:flex-start;padding:14px 12px;gap:12px}.au-benefit:first-child{padding-left:12px}.au-benefit:nth-child(3){border-left:0}.au-benefit:nth-child(n+3){border-top:1px solid var(--au-line)}.au-benefit h2{font-size:8px;letter-spacing:.035em}.au-benefit p{font-size:9px}.au-benefit>.au-icon{width:24px;height:24px}.au-grid-section{display:block;padding:34px 6%}.au-grid-intro{padding:0 0 26px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:15px}.au-grid-intro h2{font-size:38px}.au-grid-intro h2 br{display:none}.au-grid-description{grid-column:1;font-size:13px;margin-top:0!important;max-width:260px}.au-grid-intro .au-text-link{grid-column:2;grid-row:1 / span 2;padding:0 0 3px;margin:0;font-size:11px;white-space:nowrap}.au-card-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 14px}.au-card h3{font-size:15px}.au-card-info{padding-top:12px}.au-grid-section--categories .au-card-info{padding:13px 8px}.au-grid-section--products .au-card-photo{aspect-ratio:.9}.au-add{width:30px;height:30px}.au-story{min-height:600px;align-items:flex-end}.au-story>.au-image{object-position:65% center}.au-story::after{background:linear-gradient(90deg,#1c1b13c9,#25231724),linear-gradient(0deg,#201c1477,transparent)}.au-story-content{width:80%;padding:45px 7%}.au-story h2{font-size:49px}.au-story-content>p:not(.au-eyebrow){font-size:14px;max-width:280px}.au-story-aside{right:5%;top:7%;font-size:8px}.au-seasonal{padding:12px 6% 0;grid-template-columns:1fr}.au-seasonal-main{min-height:310px}.au-seasonal-content{padding:45px 25px}.au-seasonal h2{font-size:39px}.au-seasonal-main p{max-width:250px;font-size:13px}.au-seasonal-side{min-height:205px}.au-seasonal-side>div{padding:30px 25px}.au-seasonal-side h3{font-size:30px}.au-seasonal-side .au-rule{margin:20px 0 15px}.au-seasonal-side h3 br{display:none}.au-seasonal-side h3{max-width:280px}.au-community{grid-template-columns:1fr;padding:38px 6% 42px;gap:30px}.au-community-copy{padding:0 30px}.au-community h2{font-size:29px}.au-quotes{min-height:146px}.au-quotes blockquote{font-size:19px}.au-community-image{aspect-ratio:1.8}.au-grid-section--journal .au-grid-intro{padding-top:0;display:block}.au-grid-section--journal .au-grid-intro h2{font-size:35px;max-width:320px}.au-grid-section--journal .au-grid-intro .au-text-link{margin-top:20px}.au-grid-section--journal .au-card-grid{gap:14px}.au-grid-section--journal .au-card h3{font-size:13px}.au-grid-section--journal .au-card-photo{aspect-ratio:.85}.au-card-date{font-size:7px;letter-spacing:.08em}.au-newsletter{grid-template-columns:1fr 1.2fr;gap:20px;padding:32px 6%}.au-newsletter h2{font-size:32px}.au-newsletter>p{font-size:11px}.au-newsletter-form{grid-column:1/-1}.au-email-field{min-height:50px}.au-footer{grid-template-columns:repeat(3,minmax(0,1fr));padding:35px 6%;gap:30px 20px}.au-footer-brand{grid-column:1/-1}.au-footer-brand .au-logo{font-size:33px}.au-footer-brand>p{margin-top:12px}.au-footer-nav{font-size:12px;gap:9px}.au-footer-nav h3{font-size:12px}.au-footer-signoff{grid-column:1/-1;flex-direction:row;align-items:center;gap:15px;border-left:0;border-top:1px solid #ffffff25;padding:24px 0 0}.au-footer-signoff>p{font-size:9px}.au-footer-signoff>div p{font-size:7px}}
+@media(max-width:380px){.au-announcement{font-size:7px}.au-header-actions{gap:10px}.au-hero h1{font-size:45px}.au-hero-content>.au-eyebrow{font-size:7px}.au-seal{right:5%;width:63px;height:63px}.au-grid-intro h2{font-size:32px}.au-grid-intro{gap:10px}.au-card h3{font-size:13px}.au-benefit{gap:8px;padding-inline:8px}.au-benefit h2{font-size:7px}.au-benefit p{font-size:8px}.au-story h2{font-size:44px}.au-grid-section--journal .au-card-grid{grid-template-columns:1fr}.au-grid-section--journal .au-card{display:grid;grid-template-columns:42% 1fr;gap:16px}.au-grid-section--journal .au-card-photo{aspect-ratio:1.2}.au-grid-section--journal .au-card-info{align-items:center}.au-grid-section--journal .au-card h3{font-size:17px}}
+@media(max-width:380px){.au-header{gap:12px}.au-header-actions{gap:8px}}
+@media(prefers-reduced-motion:reduce){.au *,.au *::before,.au *::after{transition:none!important;scroll-behavior:auto!important}}

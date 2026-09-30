@@ -1,0 +1,26 @@
+<div class="au au-newsletter">
+  <h2>{{ section.settings.newsletter_heading | newline_to_br }}</h2><span class="au-rule"></span>
+  <p>{{ section.settings.newsletter_text | escape }}</p>
+  {% form 'customer', id: 'aurel-newsletter', class: 'au-newsletter-form' %}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <div class="au-email-field"><label class="au-visually-hidden" for="aurel-email">Your email address</label><input id="aurel-email" name="contact[email]" type="email" autocomplete="email" placeholder="Your email address" required {% if form.errors %}aria-invalid="true" aria-describedby="aurel-newsletter-error"{% endif %}><button type="submit" aria-label="Subscribe to our newsletter">{% render 'aurel-icon', icon: 'arrow' %}</button></div>
+    {% if form.posted_successfully? %}<p class="au-form-message" role="status">Thank you. Welcome to our inner circle.</p>{% endif %}
+    {% if form.errors %}<div id="aurel-newsletter-error" class="au-form-message" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
+  {% endform %}
+</div>
+<div class="au au-footer">
+  <div class="au-footer-brand"><a class="au-logo" href="{{ routes.root_url }}">{{ section.settings.brand | escape }}</a><p>Thoughtful living for a brighter tomorrow.</p>{% if section.settings.instagram != blank %}<a class="au-social" href="{{ section.settings.instagram }}" aria-label="Aurél on Instagram">{% render 'aurel-icon', icon: 'instagram' %}</a>{% endif %}</div>
+  {% for block in section.blocks %}
+    <nav class="au-footer-nav" aria-label="{{ block.settings.title | escape }}" {{ block.shopify_attributes }}><h3>{{ block.settings.title | escape }}</h3>
+    {% if block.settings.menu != blank %}{% for link in block.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}
+    {% else %}{% case block.settings.title %}
+      {% when 'Shop' %}<a href="{{ routes.all_products_collection_url }}">All Products</a><a href="#aurel-categories">Collections</a><a href="#aurel-products">Featured Products</a>
+      {% when 'About' %}<a href="#aurel-story">Our Story</a><a href="#aurel-journal">Journal</a><a href="#aurel-newsletter">Newsletter</a>
+      {% else %}{% if shop.shipping_policy != blank %}<a href="{{ shop.shipping_policy.url }}">Shipping</a>{% endif %}{% if shop.refund_policy != blank %}<a href="{{ shop.refund_policy.url }}">Returns</a>{% endif %}<a href="{{ routes.search_url }}">Search</a><a href="{{ routes.cart_url }}">Your Bag</a>{% if shop.privacy_policy != blank %}<a href="{{ shop.privacy_policy.url }}">Privacy Policy</a>{% endif %}
+    {% endcase %}{% endif %}</nav>
+  {% endfor %}
+  <div class="au-footer-signoff"><div>{% render 'aurel-icon', icon: 'leaf' %}<p>A kinder home.<br>A brighter tomorrow.</p></div><p>© {{ 'now' | date: '%Y' }} {{ section.settings.brand | escape }}. All rights reserved.</p></div>
+</div>
+{% schema %}
+{"name":"Aurél footer","settings":[{"type":"text","id":"brand","label":"Brand","default":"AURÉL"},{"type":"textarea","id":"newsletter_heading","label":"Newsletter heading","default":"Join Our\nInner Circle"},{"type":"textarea","id":"newsletter_text","label":"Newsletter description","default":"Be the first to know about new collections, thoughtful living tips, and exclusive offers."},{"type":"url","id":"instagram","label":"Instagram URL"}],"max_blocks":3,"blocks":[{"type":"menu","name":"Footer menu","settings":[{"type":"text","id":"title","label":"Heading","default":"Shop"},{"type":"link_list","id":"menu","label":"Menu"}]}],"default":{"blocks":[{"type":"menu","settings":{"title":"Shop"}},{"type":"menu","settings":{"title":"About"}},{"type":"menu","settings":{"title":"Help"}}]}}
+{% endschema %}

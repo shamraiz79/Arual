@@ -1,0 +1,14 @@
+{% comment %}Theme images override the included editorial photography.{% endcomment %}
+{% liquid
+  assign image_loading = 'lazy'
+  assign priority = 'auto'
+  if eager
+    assign image_loading = 'eager'
+    assign priority = 'high'
+  endif
+%}
+{% if image != blank %}
+  {{ image | image_url: width: 1800 | image_tag: loading: image_loading, fetchpriority: priority, widths: '360, 540, 750, 1000, 1400, 1800', sizes: sizes, alt: alt, class: 'au-image' }}
+{% else %}
+  <img class="au-image" src="{{ fallback | asset_url }}" alt="{{ alt | escape }}" width="1400" height="1200" loading="{{ image_loading }}" fetchpriority="{{ priority }}">
+{% endif %}

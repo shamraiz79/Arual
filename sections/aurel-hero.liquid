@@ -1,0 +1,17 @@
+<section class="au au-hero" aria-labelledby="hero-title-{{ section.id }}">
+  <div class="au-hero-photo">
+    {% render 'aurel-image', image: section.settings.image, fallback: 'aurel-hero.jpg', alt: 'Olive branches, handmade ceramics and candlelight in a sunlit home', eager: true, sizes: '(min-width: 750px) 55vw, 100vw' %}
+    <span class="au-photo-caption">Beautiful<br>spaces.<br>Brighter<br>days.</span>
+  </div>
+  <div class="au-hero-content">
+    <div class="au-seal" aria-hidden="true"><span>GOOD SPACES</span><b>A</b><span>BRIGHTER DAYS</span></div>
+    <p class="au-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    <h1 id="hero-title-{{ section.id }}">{{ section.settings.heading | newline_to_br }}</h1>
+    <span class="au-rule"></span>
+    <p class="au-hero-description">{{ section.settings.text | escape }}</p>
+    <a class="au-button" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.button | escape }} <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+{% schema %}
+{"name":"Aurél hero","settings":[{"type":"image_picker","id":"image","label":"Hero image"},{"type":"text","id":"eyebrow","label":"Eyebrow","default":"MODERN LIVING. TIMELESS VALUES"},{"type":"textarea","id":"heading","label":"Heading","default":"Objects\nfor a More\nIntentional Life."},{"type":"textarea","id":"text","label":"Description","default":"Thoughtfully designed essentials for your home, your rituals, and a more meaningful tomorrow."},{"type":"text","id":"button","label":"Button","default":"Shop the Collection"},{"type":"url","id":"link","label":"Button link"}],"presets":[{"name":"Aurél hero"}]}
+{% endschema %}

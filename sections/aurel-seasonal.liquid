@@ -1,0 +1,13 @@
+<section class="au au-seasonal" aria-label="The seasonal collection">
+  <div class="au-seasonal-main">
+    {% render 'aurel-image', image: section.settings.image, fallback: 'aurel-autumn.jpg', alt: 'Layered natural linens in warm autumn tones', sizes: '(min-width: 750px) 65vw, 100vw' %}
+    <div class="au-seasonal-content"><h2>{{ section.settings.heading | newline_to_br }}</h2><p>{{ section.settings.text | escape }}</p><a class="au-button au-button--light" href="{{ section.settings.link | default: routes.all_products_collection_url }}">Shop the Collection <span aria-hidden="true">→</span></a></div>
+  </div>
+  <a class="au-seasonal-side" href="{{ section.settings.link | default: routes.all_products_collection_url }}">
+    {% render 'aurel-image', image: section.settings.side_image, fallback: 'aurel-olive.jpg', alt: '', sizes: '(min-width: 750px) 30vw, 100vw' %}
+    <div><h3>{{ section.settings.side_heading | newline_to_br }}</h3><span class="au-rule"></span><p class="au-eyebrow">Discover now <span aria-hidden="true">→</span></p></div>
+  </a>
+</section>
+{% schema %}
+{"name":"Aurél seasonal collection","settings":[{"type":"image_picker","id":"image","label":"Collection image"},{"type":"image_picker","id":"side_image","label":"Side image"},{"type":"textarea","id":"heading","label":"Heading","default":"The\nAutumn Collection"},{"type":"text","id":"text","label":"Description","default":"Rich textures. Warmer days. A more mindful home."},{"type":"textarea","id":"side_heading","label":"Side heading","default":"Seasonal pieces\nfor intentional\nliving."},{"type":"url","id":"link","label":"Collection link"}],"presets":[{"name":"Aurél seasonal collection"}]}
+{% endschema %}
