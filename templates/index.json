@@ -12,20 +12,11 @@
     "aurel_hero": {
       "type": "aurel-hero",
       "settings": {
-        "eyebrow": "MODERN LIVING. TIMELESS VALUES",
         "heading": "Objects\nfor a More\nIntentional Life.",
-        "text": "Thoughtfully designed essentials for your home, your rituals, and a more meaningful tomorrow.",
         "button": "Shop the Collection",
         "link": "shopify://pages/collections",
-        "show_seal": true,
-        "seal_top_text": "GOOD SPACES",
-        "seal_bottom_text": "BRIGHTER DAYS",
-        "seal_monogram": "A",
-        "seal_color": "#858278",
-        "seal_size": 110,
-        "seal_mobile_size": 64,
-        "seal_rotation": 0,
-        "seal_motion": true
+        "secondary_button": "Our Story",
+        "secondary_link": "shopify://pages/our-story-page"
       }
     },
     "aurel_benefits": {

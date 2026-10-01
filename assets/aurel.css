@@ -140,57 +140,26 @@
 @media(max-width:380px){.au-header{gap:12px}.au-header-actions{gap:8px}}
 @media(prefers-reduced-motion:reduce){.au *,.au *::before,.au *::after{transition:none!important;scroll-behavior:auto!important}}
 
-/* Editorial hero: controlled height and a balanced 54 / 46 split. */
-.au-hero{display:grid;grid-template-columns:54% 46%;height:560px;max-height:560px}
-.au-hero-photo{position:relative;min-width:0;min-height:0;overflow:hidden}
-.au-hero-photo>.au-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.au-photo-caption{position:absolute;top:20%;left:5%;font-size:10px;line-height:3;letter-spacing:.4em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px #0008}
-.au-hero-content{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;width:100%;max-width:560px;height:100%;min-width:0;padding:60px 7%;justify-self:center}
-.au-hero-content>.au-eyebrow{max-width:calc(100% - var(--au-seal-size, 110px));margin-bottom:22px;font-size:9px;flex-shrink:0}
-.au-hero h1{font-size:58px;line-height:.98;letter-spacing:-.055em;margin-bottom:24px;text-wrap:initial;flex-shrink:0}
-.au-hero .au-rule{flex-shrink:0}
-.au-hero .au-hero-description{font-size:15px;max-width:360px;line-height:1.5;margin:20px 0 32px;flex-shrink:0}
-.au-hero .au-button{flex-shrink:0}
-
-@media(min-width:1440px){
-.au-hero{height:600px;max-height:600px}
-.au-hero h1{font-size:64px}
-
-}
-@media(min-width:750px) and (max-width:1100px){
-.au-hero{height:500px;max-height:500px}
-.au-hero-content{padding:50px 7%}
-.au-hero h1{font-size:clamp(36px,4.3vw,47px)}
-.au-hero .au-hero-description{font-size:13px}
-
-}
+/* Immersive image hero with a minimal, accessible action bar. */
+.au-hero{position:relative;isolation:isolate;display:flex;align-items:flex-end;justify-content:center;min-height:440px;height:calc(100svh - 122px);max-height:820px;overflow:hidden;background:#514939}
+.au-hero-photo{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.au-hero-photo>.au-image{width:100%;height:100%;object-fit:cover;object-position:center 58%}
+.au-hero::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,transparent 50%,rgba(24,22,16,.16) 72%,rgba(24,22,16,.58) 100%)}
+.au-hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;width:100%;padding:64px 24px}
+.au-hero .au-button{min-height:54px;min-width:200px;padding:17px 30px;border:1px solid transparent;font-size:12px;letter-spacing:.06em;gap:28px;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.au-hero .au-hero-primary{background:#f6f4ef;color:#292923!important;border-color:#f6f4ef}
+.au-hero .au-hero-primary:hover{background:#e6e0d3;border-color:#e6e0d3}
+.au-hero .au-hero-secondary{background:rgba(24,22,16,.28);color:#fff!important;border-color:rgba(255,255,255,.7);backdrop-filter:blur(10px)}
+.au-hero .au-hero-secondary:hover{background:rgba(24,22,16,.55);border-color:#fff}
+.au-hero .au-button:focus-visible{outline:2px solid #fff;outline-offset:5px}
 @media(max-width:749px){
-.au-hero{grid-template-columns:1fr;grid-template-rows:260px minmax(0,1fr);height:680px;max-height:680px}
-.au-hero-content{max-width:560px;padding:28px 7%}
-.au-photo-caption{left:6%;font-size:8px}
-.au-hero h1{font-size:clamp(36px,9vw,48px);margin-bottom:18px}
-.au-hero-content>.au-eyebrow{font-size:8px;margin-bottom:18px;max-width:calc(100% - var(--au-seal-mobile-size, 64px) - 6px)}
-.au-hero .au-hero-description{font-size:14px;margin:16px 0 24px}
-
+.au-hero{height:calc(100svh - 106px);min-height:420px;max-height:740px}
+.au-hero-photo>.au-image{object-position:45% center}
+.au-hero-actions{padding:36px 20px;gap:10px}
+.au-hero .au-button{min-width:0;min-height:52px;padding:15px 20px;gap:18px;font-size:11px}
 }
-@media(prefers-reduced-motion:no-preference){
-.au-hero-photo>.au-image{animation:au-hero-zoom 16s ease-out both}
-.au-hero-content>:not(.au-seal){animation:au-hero-reveal .8s ease-out both}
+@media(max-width:380px){.au-hero-actions{flex-direction:column;align-items:center}.au-hero .au-button{width:100%;max-width:280px}}
 
-}
-@keyframes au-hero-zoom{from{transform:scale(1)}to{transform:scale(1.02)}}
-@keyframes au-hero-reveal{from{opacity:0;translate:0 10px}to{opacity:1;translate:0 0}}
-@keyframes au-seal-settle{from{transform:rotate(calc(var(--au-seal-rotation, 0deg) - 3deg))}to{transform:rotate(var(--au-seal-rotation, 0deg))}}
-
-/* Curved lettering forms the seal itself; no outer border. */
-.au-seal{position:absolute;right:20px;top:20px;width:var(--au-seal-size,110px);height:var(--au-seal-size,110px);color:var(--au-seal-color,#858278);transform:rotate(var(--au-seal-rotation,0deg));pointer-events:none}
-.au-seal svg{display:block;width:100%;height:100%;overflow:visible;fill:currentColor}
-.au-seal__ring{font:7px Arial,Helvetica,sans-serif;letter-spacing:3px;text-transform:uppercase}
-.au-seal__monogram{font:30px Georgia,'Times New Roman',serif}
-.au-hero--no-seal .au-eyebrow{max-width:100%}
-@media(min-width:750px) and (max-width:1100px){.au-seal{width:min(var(--au-seal-size,110px),68px);height:min(var(--au-seal-size,110px),68px);top:14px;right:14px}}
-@media(max-width:749px){.au-seal{width:var(--au-seal-mobile-size,64px);height:var(--au-seal-mobile-size,64px);top:18px;right:7%}}
-@media(prefers-reduced-motion:no-preference){.au-seal:not(.au-seal--still){animation:au-seal-settle 3s ease-out both}}
 /* Editorial navigation and Shop mega menu. */
 .au-header{z-index:30}
 .au-main-nav{display:flex;align-items:center;gap:32px;margin-right:auto;margin-left:8%;font:16px Georgia,'Times New Roman',serif}

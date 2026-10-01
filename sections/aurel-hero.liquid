@@ -1,27 +1,15 @@
-<section style="--au-seal-size: {{ section.settings.seal_size }}px; --au-seal-mobile-size: {{ section.settings.seal_mobile_size }}px; --au-seal-color: {{ section.settings.seal_color }}; --au-seal-rotation: {{ section.settings.seal_rotation }}deg;" class="au au-hero{% unless section.settings.show_seal %} au-hero--no-seal{% endunless %}" aria-labelledby="hero-title-{{ section.id }}">
+<section class="au au-hero" aria-labelledby="hero-title-{{ section.id }}">
   <div class="au-hero-photo">
-    {% render 'aurel-image', image: section.settings.image, fallback: 'aurel-hero.jpg', alt: 'Olive branches, handmade ceramics and candlelight in a sunlit home', eager: true, sizes: '(min-width: 750px) 54vw, 100vw' %}
-    <span class="au-photo-caption">Beautiful<br>spaces.<br>Brighter<br>days.</span>
+    {% render 'aurel-image', image: section.settings.image, fallback: 'aurel-hero.jpg', alt: 'Olive branches, handmade ceramics and candlelight in a sunlit home', eager: true, sizes: '100vw' %}
   </div>
-  <div class="au-hero-content">
-    {% if section.settings.show_seal %}
-      <div class="au-seal{% unless section.settings.seal_motion %} au-seal--still{% endunless %}" aria-hidden="true">
-        <svg viewBox="0 0 110 110" focusable="false">
-          <defs>
-            <path id="seal-top-{{ section.id }}" d="M 12,55 A 43,43 0 0,1 98,55" />
-            <path id="seal-bottom-{{ section.id }}" d="M 12,55 A 43,43 0 0,0 98,55" />
-          </defs>
-          <text class="au-seal__ring"><textPath href="#seal-top-{{ section.id }}" startOffset="50%" text-anchor="middle">{{ section.settings.seal_top_text | escape }}</textPath></text>
-          <text class="au-seal__ring"><textPath href="#seal-bottom-{{ section.id }}" startOffset="50%" text-anchor="middle">{{ section.settings.seal_bottom_text | escape }}</textPath></text>
-          <text class="au-seal__monogram" x="55" y="64" text-anchor="middle">{{ section.settings.seal_monogram | escape }}</text>
-        </svg>
-      </div>
+  <h1 class="au-visually-hidden" id="hero-title-{{ section.id }}">{{ section.settings.heading | default: shop.name | escape }}</h1>
+  <div class="au-hero-actions">
+    {% if section.settings.button != blank %}
+      <a class="au-button au-hero-primary" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.button | escape }} <span aria-hidden="true">&rarr;</span></a>
     {% endif %}
-    <p class="au-eyebrow">{{ section.settings.eyebrow | escape }}</p>
-    <h1 id="hero-title-{{ section.id }}">{{ section.settings.heading | newline_to_br }}</h1>
-    <span class="au-rule"></span>
-    <p class="au-hero-description">{{ section.settings.text | escape }}</p>
-    <a class="au-button" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.button | escape }} <span aria-hidden="true">→</span></a>
+    {% if section.settings.secondary_button != blank %}
+      <a class="au-button au-hero-secondary" href="{{ section.settings.secondary_link | default: routes.all_products_collection_url }}">{{ section.settings.secondary_button | escape }} <span aria-hidden="true">&rarr;</span></a>
+    {% endif %}
   </div>
 </section>
 {% schema %}
@@ -34,22 +22,10 @@
       "label": "Hero image"
     },
     {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "MODERN LIVING. TIMELESS VALUES"
-    },
-    {
       "type": "textarea",
       "id": "heading",
-      "label": "Heading",
+      "label": "Accessible heading (visually hidden)",
       "default": "Objects\nfor a More\nIntentional Life."
-    },
-    {
-      "type": "textarea",
-      "id": "text",
-      "label": "Description",
-      "default": "Thoughtfully designed essentials for your home, your rituals, and a more meaningful tomorrow."
     },
     {
       "type": "text",
@@ -63,77 +39,15 @@
       "label": "Button link"
     },
     {
-      "type": "header",
-      "content": "Brand seal"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_seal",
-      "label": "Show seal",
-      "default": true
-    },
-    {
       "type": "text",
-      "id": "seal_top_text",
-      "label": "Top curved text",
-      "default": "GOOD SPACES",
-      "info": "Keep short for the best fit around the seal."
+      "id": "secondary_button",
+      "label": "Secondary button",
+      "default": "Our Story"
     },
     {
-      "type": "text",
-      "id": "seal_bottom_text",
-      "label": "Bottom curved text",
-      "default": "BRIGHTER DAYS",
-      "info": "Keep short for the best fit around the seal."
-    },
-    {
-      "type": "text",
-      "id": "seal_monogram",
-      "label": "Center initial",
-      "default": "A",
-      "info": "Use one or two characters."
-    },
-    {
-      "type": "color",
-      "id": "seal_color",
-      "label": "Seal color",
-      "default": "#858278"
-    },
-    {
-      "type": "range",
-      "id": "seal_size",
-      "label": "Desktop seal size",
-      "min": 70,
-      "max": 110,
-      "step": 5,
-      "unit": "px",
-      "default": 110
-    },
-    {
-      "type": "range",
-      "id": "seal_mobile_size",
-      "label": "Mobile seal size",
-      "min": 50,
-      "max": 80,
-      "step": 2,
-      "unit": "px",
-      "default": 64
-    },
-    {
-      "type": "range",
-      "id": "seal_rotation",
-      "label": "Seal rotation",
-      "min": -20,
-      "max": 20,
-      "step": 1,
-      "unit": "deg",
-      "default": 0
-    },
-    {
-      "type": "checkbox",
-      "id": "seal_motion",
-      "label": "Subtle seal scroll motion",
-      "default": true
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
     }
   ],
   "presets": [
