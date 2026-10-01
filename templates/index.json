@@ -16,7 +16,7 @@
         "heading": "Objects\nfor a More\nIntentional Life.",
         "text": "Thoughtfully designed essentials for your home, your rituals, and a more meaningful tomorrow.",
         "button": "Shop the Collection",
-        "link": "",
+        "link": "shopify://pages/collections",
         "show_seal": true,
         "seal_top_text": "GOOD SPACES",
         "seal_bottom_text": "BRIGHTER DAYS",
@@ -136,7 +136,7 @@
         "heading": "Shop\nby Category",
         "text": "Discover timeless pieces designed for everyday living.",
         "button": "Explore All",
-        "link": "shopify://collections",
+        "link": "shopify://pages/collections",
         "blog": ""
       }
     },
@@ -223,7 +223,7 @@
         "heading": "The\nAutumn Collection",
         "text": "Rich textures. Warmer days. A more mindful home.",
         "side_heading": "Seasonal pieces\nfor intentional\nliving.",
-        "link": ""
+        "link": "shopify://pages/collections"
       }
     },
     "aurel_community": {

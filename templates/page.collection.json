@@ -1,93 +1,125 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "aurel-collections-banner",
-      "settings": {}
+      "settings": {
+        "layout": "hero",
+        "image_alt": "Warm sunlight, olive branches and handmade ceramics",
+        "eager": true,
+        "eyebrow": "Our collections",
+        "heading": "Everyday Objects\nfor a More\nIntentional Life.",
+        "text": "Thoughtfully curated collections for your home,\nyour rituals, and a more meaningful tomorrow.",
+        "note": "Simple\nObjects.\nBrighter\nDays",
+        "button": "Shop the Collections",
+        "link": "shopify://pages/collections"
+      }
     },
     "directory": {
       "type": "aurel-collections-directory",
-      "settings": {
-        "source": "curated"
-      },
       "blocks": {
         "home": {
           "type": "collection",
           "settings": {
+            "collection": "",
             "title": "Home Essentials",
             "description": "Build a calmer, more intentional home\nwith everyday essentials.",
             "sample_image": "aurel-autumn.jpg",
-            "filter_label": "Home Essentials",
-            "show_filter": true
+            "link": "",
+            "show_filter": true,
+            "filter_label": "Home Essentials"
           }
         },
         "candles": {
           "type": "collection",
           "settings": {
+            "collection": "",
             "title": "Candles & Fragrance",
             "description": "Scents to slow down, ground you,\nand make home feel like home.",
             "sample_image": "aurel-candle.jpg",
-            "filter_label": "Candles & Fragrance",
-            "show_filter": true
+            "link": "",
+            "show_filter": true,
+            "filter_label": "Candles & Fragrance"
           }
         },
         "textiles": {
           "type": "collection",
           "settings": {
+            "collection": "",
             "title": "Textiles",
             "description": "Softness in every detail.\nThoughtfully made for everyday living.",
             "sample_image": "aurel-textiles.jpg",
-            "filter_label": "Textiles",
-            "show_filter": true
+            "link": "",
+            "show_filter": true,
+            "filter_label": "Textiles"
           }
         },
         "tabletop": {
           "type": "collection",
           "settings": {
+            "collection": "",
             "title": "Tabletop & Dining",
             "description": "For more intentional meals\nand meaningful moments.",
             "sample_image": "aurel-mug.jpg",
-            "filter_label": "Tabletop & Dining",
-            "show_filter": true
+            "link": "",
+            "show_filter": true,
+            "filter_label": "Tabletop & Dining"
           }
         },
         "decor": {
           "type": "collection",
           "settings": {
+            "collection": "",
             "title": "Decor & Objects",
             "description": "Pieces that tell a story\nand bring beauty to the everyday.",
             "sample_image": "aurel-vase.jpg",
-            "filter_label": "Decor & Objects",
-            "show_filter": true
+            "link": "",
+            "show_filter": true,
+            "filter_label": "Decor & Objects"
           }
         },
         "bags": {
           "type": "collection",
           "settings": {
+            "collection": "",
             "title": "Bags & Everyday Carry",
             "description": "Beautiful function, always.\nDesigned to move with you.",
             "sample_image": "aurel-bag.jpg",
-            "filter_label": "Bags & Carry",
-            "show_filter": true
+            "link": "",
+            "show_filter": true,
+            "filter_label": "Bags & Carry"
           }
         },
         "gifts": {
           "type": "collection",
           "settings": {
+            "collection": "",
             "title": "Gifts",
             "description": "Meaningful pieces for the\npeople you care about.",
             "sample_image": "aurel-gifts.png",
-            "filter_label": "Gifts",
-            "show_filter": false
+            "link": "",
+            "show_filter": false,
+            "filter_label": "Gifts"
           }
         },
         "new": {
           "type": "collection",
           "settings": {
+            "collection": "",
             "title": "New Arrivals",
             "description": "Fresh pieces for\na brighter tomorrow.",
             "sample_image": "aurel-olive.jpg",
-            "filter_label": "New Arrivals",
-            "show_filter": false
+            "link": "",
+            "show_filter": false,
+            "filter_label": "New Arrivals"
           }
         }
       },
@@ -100,19 +132,29 @@
         "bags",
         "gifts",
         "new"
-      ]
+      ],
+      "settings": {
+        "source": "curated",
+        "label": "Browse our collections",
+        "all_label": "All Collections",
+        "show_filters": true,
+        "show_sort": true,
+        "button": "Explore Collection",
+        "empty_text": "Collections are coming soon. Check back for something thoughtful."
+      }
     },
     "closing": {
       "type": "aurel-collections-banner",
       "settings": {
         "layout": "closing",
+        "image_alt": "Warm sunlight, olive branches and handmade ceramics",
         "eager": false,
         "eyebrow": "A kinder tomorrow",
         "heading": "More Than Products.\nA More Intentional Life.",
         "text": "Our collections are designed to bring beauty, function,\nand purpose into everyday living.",
+        "note": "Good\nSpaces.\nBrighter\nDays",
         "button": "Explore All Collections",
-        "link": "#all-collections",
-        "note": "Good\nSpaces.\nBrighter\nDays"
+        "link": "#all-collections"
       }
     }
   },
