@@ -35,6 +35,8 @@
       {% if template.suffix == 'our-story' or template.suffix == 'collection' %}{{ 'aurel-our-story.css' | asset_url | stylesheet_tag }}{% endif %}
       {% if template.suffix == 'collection' %}{{ 'aurel-collections.css' | asset_url | stylesheet_tag }}<script src="{{ 'aurel-collections.js' | asset_url }}" defer="defer"></script>{% endif %}
       <script src="{{ 'aurel.js' | asset_url }}" defer="defer"></script>
+      {{ 'aurel-motion.css' | asset_url | stylesheet_tag }}
+      <script src="{{ 'aurel-motion.js' | asset_url }}" defer="defer"></script>
     {% endif %}
   </head>
 

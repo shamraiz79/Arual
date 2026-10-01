@@ -24,7 +24,7 @@
     {% if section.settings.text != blank %}<p class="au-grid-description">{{ section.settings.text | escape }}</p>{% endif %}
     <a class="au-text-link" href="{{ section.settings.link | default: default_link }}">{{ section.settings.button | escape }} <span aria-hidden="true">→</span></a>
   </div>
-  <div class="au-card-grid">
+  <div class="au-card-grid" {% if mode == 'products' or mode == 'journal' %}id="au-track-{{ section.id }}" data-au-track tabindex="0" role="region" aria-label="{{ section.settings.heading | escape }}"{% endif %}>
     {% for block in section.blocks %}
       {% liquid
         assign product = block.settings.product
@@ -55,10 +55,11 @@
       %}
       <article class="au-card" {{ block.shopify_attributes }}>
         <a class="au-card-photo" href="{{ card_link }}" aria-label="{{ title | escape }}">
-          {% render 'aurel-image', image: card_image, fallback: block.settings.fallback, alt: title, sizes: '(min-width: 1000px) 18vw, (min-width: 600px) 30vw, 45vw' %}
+          {% render 'aurel-image', image: card_image, fallback: block.settings.fallback, alt: title, sizes: '(min-width: 1000px) 18vw, (min-width: 750px) 28vw, 75vw' %}
+          {% if mode == 'products' and product.images.size > 1 %}<div class="au-card-secondary" aria-hidden="true">{% render 'aurel-image', image: product.images[1], alt: '', sizes: '(min-width: 1000px) 18vw, 75vw' %}</div>{% endif %}
         </a>
         <div class="au-card-info">
-          <div><h3><a href="{{ card_link }}">{{ title | escape }}{% if mode == 'categories' %} <span aria-hidden="true">→</span>{% endif %}</a></h3>
+          <div><h3><a href="{{ card_link }}">{{ title | escape }}{% if mode == 'categories' or mode == 'journal' %} <span aria-hidden="true">→</span>{% endif %}</a></h3>
           {% if mode == 'products' %}
             {% if product != blank %}<p class="au-price">{{ product.price | money }}{% unless product.available %} · Sold out{% endunless %}</p>{% elsif block.settings.caption != blank %}<p class="au-price">{{ block.settings.caption | escape }}</p>{% endif %}
           {% elsif mode == 'journal' %}
@@ -76,6 +77,8 @@
       </article>
     {% endfor %}
   </div>
+  {% if mode == 'products' or mode == 'journal' %}<div class="au-slider-controls" data-au-slider-controls hidden><button type="button" data-au-prev aria-label="Previous cards" aria-controls="au-track-{{ section.id }}">&larr;</button><button type="button" data-au-next aria-label="Next cards" aria-controls="au-track-{{ section.id }}">&rarr;</button></div>{% endif %}
+  {% if mode == 'products' %}<p class="au-cart-feedback" role="status" aria-live="polite" data-au-cart-feedback></p>{% endif %}
 </section>
 {% schema %}
 {"name":"Aurél editorial grid","max_blocks":4,"settings":[{"type":"select","id":"mode","label":"Grid type","options":[{"value":"categories","label":"Categories"},{"value":"products","label":"Products"},{"value":"journal","label":"Journal"}],"default":"categories"},{"type":"text","id":"eyebrow","label":"Eyebrow"},{"type":"textarea","id":"heading","label":"Heading","default":"Shop\nby Category"},{"type":"textarea","id":"text","label":"Description"},{"type":"text","id":"button","label":"Link label","default":"Explore All"},{"type":"url","id":"link","label":"Link"},{"type":"blog","id":"blog","label":"Blog (journal grid)"}],"blocks":[{"type":"card","name":"Card","settings":[{"type":"product","id":"product","label":"Product (product grid)"},{"type":"collection","id":"collection","label":"Collection (category grid)"},{"type":"article","id":"article","label":"Article (journal grid)"},{"type":"image_picker","id":"image","label":"Image override"},{"type":"text","id":"title","label":"Fallback title","default":"Home Essentials"},{"type":"text","id":"caption","label":"Fallback price or date"},{"type":"url","id":"link","label":"Fallback link"},{"type":"text","id":"fallback","label":"Theme image filename","default":"aurel-hero.jpg"}]}],"presets":[{"name":"Aurél editorial grid"}]}

@@ -2,7 +2,7 @@
   {% render 'aurel-image', image: section.settings.image, fallback: 'aurel-story.jpg', alt: 'A quiet moment with a warm cup in a naturally styled home', sizes: '100vw' %}
   <div class="au-story-content">
     <p class="au-eyebrow">A more<br>beautiful<br>tomorrow</p>
-    <h2 id="story-title-{{ section.id }}">{{ section.settings.heading | newline_to_br }}</h2>
+    <h2 id="story-title-{{ section.id }}">{% assign story_lines = section.settings.heading | escape | newline_to_br | split: '<br />' %}{% for line in story_lines %}<span class="au-story-line">{{ line }}</span>{% endfor %}</h2>
     <span class="au-rule"></span>
     <p>{{ section.settings.text | escape }}</p>
     <a class="au-button au-button--light" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.button | escape }} <span aria-hidden="true">→</span></a>
