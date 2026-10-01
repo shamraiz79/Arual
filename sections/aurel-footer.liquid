@@ -3,7 +3,7 @@
   <p>{{ section.settings.newsletter_text | escape }}</p>
   {% form 'customer', id: 'aurel-newsletter', class: 'au-newsletter-form' %}
     <input type="hidden" name="contact[tags]" value="newsletter">
-    <div class="au-email-field"><label class="au-visually-hidden" for="aurel-email">Your email address</label><input id="aurel-email" name="contact[email]" type="email" autocomplete="email" placeholder="Your email address" required {% if form.errors %}aria-invalid="true" aria-describedby="aurel-newsletter-error"{% endif %}><button type="submit" aria-label="Subscribe to our newsletter">{% if template.suffix == 'our-story' %}<span>Subscribe</span>{% endif %}{% render 'aurel-icon', icon: 'arrow' %}</button></div>
+    <div class="au-email-field"><label class="au-visually-hidden" for="aurel-email">Your email address</label><input id="aurel-email" name="contact[email]" type="email" autocomplete="email" placeholder="Your email address" required {% if form.errors %}aria-invalid="true" aria-describedby="aurel-newsletter-error"{% endif %}><button type="submit" aria-label="Subscribe to our newsletter">{% if template.suffix == 'our-story' or template.suffix == 'collection' %}<span>Subscribe</span>{% endif %}{% render 'aurel-icon', icon: 'arrow' %}</button></div>
     {% if form.posted_successfully? %}<p class="au-form-message" role="status">Thank you. Welcome to our inner circle.</p>{% endif %}
     {% if form.errors %}<div id="aurel-newsletter-error" class="au-form-message" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
   {% endform %}

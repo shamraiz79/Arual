@@ -1,0 +1,15 @@
+{% liquid
+  assign card_title = block.settings.title | default: collection.title | default: 'Collection'
+  assign card_description = block.settings.description | default: collection.description | strip_html | truncate: 150
+  assign card_image = block.settings.image | default: collection.featured_image
+  assign card_link = block.settings.link | default: collection.url | default: routes.all_products_collection_url
+  assign card_date = collection.published_at | date: '%s' | default: '0'
+%}
+<article class="au-directory-card" data-collection-card data-key="{{ key }}" data-title="{{ card_title | escape }}" data-index="{{ index }}" data-date="{{ card_date }}" {{ block.shopify_attributes }}>
+  <a class="au-directory-card__link" href="{{ card_link }}">
+    <div class="au-directory-card__image">{% render 'aurel-image', image: card_image, fallback: fallback, alt: card_title, sizes: '(min-width: 990px) 23vw, (min-width: 540px) 45vw, 90vw' %}</div>
+    <h2>{{ card_title | escape }}</h2>
+    {% if card_description != blank %}<p>{{ card_description | escape | newline_to_br }}</p>{% endif %}
+    <div class="au-directory-card__action"><span>{{ button | escape }} <span aria-hidden="true">&rarr;</span></span><span class="au-directory-card__arrow" aria-hidden="true">{% render 'aurel-icon', icon: 'arrow' %}</span></div>
+  </a>
+</article>

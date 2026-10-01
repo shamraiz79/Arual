@@ -1,0 +1,175 @@
+<section class="au au-collections-directory" id="all-collections" data-au-collections aria-label="{{ section.settings.label | escape }}">
+  {% if section.settings.source == 'all' %}
+    {% paginate collections by 48 %}
+      {% render 'aurel-collection-toolbar', section: section, items: collections, automatic: true %}
+      <div class="au-collection-grid" id="collection-grid-{{ section.id }}">
+        {% for collection in collections %}
+          {% render 'aurel-directory-card', collection: collection, index: forloop.index0, key: collection.id, fallback: 'aurel-community.jpg', button: section.settings.button %}
+        {% else %}<p class="au-collection-empty">{{ section.settings.empty_text | escape }}</p>{% endfor %}
+      </div>
+      {% if paginate.pages > 1 %}<nav class="au-collection-pagination" aria-label="Collection pages">{{ paginate | default_pagination }}</nav>{% endif %}
+    {% endpaginate %}
+  {% else %}
+    {% render 'aurel-collection-toolbar', section: section, items: section.blocks %}
+    <div class="au-collection-grid" id="collection-grid-{{ section.id }}">
+      {% for block in section.blocks %}
+        {% render 'aurel-directory-card', collection: block.settings.collection, block: block, index: forloop.index0, key: block.id, fallback: block.settings.sample_image, button: section.settings.button %}
+      {% else %}<p class="au-collection-empty">{{ section.settings.empty_text | escape }}</p>{% endfor %}
+    </div>
+  {% endif %}
+  <p class="au-visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-collection-status></p>
+</section>
+{% schema %}
+{
+  "name": "Collections - directory",
+  "settings": [
+    {
+      "type": "select",
+      "id": "source",
+      "label": "Collection source",
+      "options": [
+        {
+          "value": "curated",
+          "label": "Editable collection cards"
+        },
+        {
+          "value": "all",
+          "label": "All store collections"
+        }
+      ],
+      "default": "curated"
+    },
+    {
+      "type": "paragraph",
+      "content": "Editable cards include sample content. Pick a collection for each card; its title and image are used when overrides are empty. All store collections mode includes every collection with 48 per page; filtering and sorting apply to the displayed page."
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Accessible section label",
+      "default": "Browse our collections"
+    },
+    {
+      "type": "text",
+      "id": "all_label",
+      "label": "All collections filter label",
+      "default": "All Collections"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "label": "Show category filters",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sort",
+      "label": "Show sorting",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Card link label",
+      "default": "Explore Collection"
+    },
+    {
+      "type": "text",
+      "id": "empty_text",
+      "label": "Empty state",
+      "default": "Collections are coming soon. Check back for something thoughtful."
+    }
+  ],
+  "max_blocks": 48,
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection card",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title override"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description override"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "The sample photograph appears until you select your own."
+        },
+        {
+          "type": "select",
+          "id": "sample_image",
+          "label": "Sample image",
+          "options": [
+            {
+              "value": "aurel-autumn.jpg",
+              "label": "Home textiles"
+            },
+            {
+              "value": "aurel-candle.jpg",
+              "label": "Candle"
+            },
+            {
+              "value": "aurel-textiles.jpg",
+              "label": "Folded textiles"
+            },
+            {
+              "value": "aurel-mug.jpg",
+              "label": "Tableware"
+            },
+            {
+              "value": "aurel-vase.jpg",
+              "label": "Ceramic vase"
+            },
+            {
+              "value": "aurel-bag.jpg",
+              "label": "Everyday bag"
+            },
+            {
+              "value": "aurel-gifts.png",
+              "label": "Wrapped gift"
+            },
+            {
+              "value": "aurel-olive.jpg",
+              "label": "Olive branches"
+            }
+          ],
+          "default": "aurel-autumn.jpg"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Destination override"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_filter",
+          "label": "Show category filter",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "filter_label",
+          "label": "Filter label override"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collections - directory"
+    }
+  ]
+}
+{% endschema %}

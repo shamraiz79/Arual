@@ -1,0 +1,99 @@
+{% liquid
+  assign fallback = 'aurel-story-hero.png'
+  if section.settings.layout == 'closing'
+    assign fallback = 'aurel-community.jpg'
+  endif
+%}
+<section class="au au-collections-banner au-collections-banner--{{ section.settings.layout }}" aria-labelledby="collection-banner-{{ section.id }}">
+  <div class="au-collections-banner__media">
+    {% render 'aurel-image', image: section.settings.image, fallback: fallback, alt: section.settings.image_alt, eager: section.settings.eager, sizes: '100vw' %}
+    {% if section.settings.note != blank %}<p class="au-collections-banner__note">{{ section.settings.note | escape | newline_to_br }}</p>{% endif %}
+  </div>
+  <div class="au-collections-banner__copy">
+    <p class="au-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {% if section.settings.layout == 'hero' %}<h1 id="collection-banner-{{ section.id }}">{{ section.settings.heading | escape | newline_to_br }}</h1>{% else %}<h2 id="collection-banner-{{ section.id }}">{{ section.settings.heading | escape | newline_to_br }}</h2>{% endif %}
+    <p class="au-collections-banner__description">{{ section.settings.text | escape | newline_to_br }}</p>
+    {% if section.settings.button != blank %}<a class="au-button" href="{{ section.settings.link | default: '#all-collections' }}">{{ section.settings.button | escape }} <span aria-hidden="true">&rarr;</span></a>{% endif %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Collections - banner",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "hero",
+          "label": "Opening hero"
+        },
+        {
+          "value": "closing",
+          "label": "Closing split banner"
+        }
+      ],
+      "default": "hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "The sample photograph appears until you select your own."
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image description",
+      "default": "Warm sunlight, olive branches and handmade ceramics"
+    },
+    {
+      "type": "checkbox",
+      "id": "eager",
+      "label": "Prioritize image loading",
+      "default": true,
+      "info": "Enable for the first banner only."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Our collections"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Everyday Objects\nfor a More\nIntentional Life."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Thoughtfully curated collections for your home,\nyour rituals, and a more meaningful tomorrow."
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Decorative handwritten note",
+      "default": "Simple\nObjects.\nBrighter\nDays"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Button destination"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collections - banner"
+    }
+  ]
+}
+{% endschema %}

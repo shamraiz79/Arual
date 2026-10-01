@@ -1,0 +1,17 @@
+<div class="au-collection-toolbar" data-collection-controls hidden>
+  {% if section.settings.show_filters %}
+    <div class="au-collection-filters" role="group" aria-label="Filter collections">
+      <button type="button" class="is-active" data-collection-filter="all" aria-pressed="true" aria-controls="collection-grid-{{ section.id }}">{{ section.settings.all_label | escape }}</button>
+      {% for item in items %}
+        {% if automatic %}
+          <button type="button" data-collection-filter="{{ item.id }}" aria-pressed="false" aria-controls="collection-grid-{{ section.id }}">{{ item.title | escape }}</button>
+        {% elsif item.settings.show_filter %}
+          <button type="button" data-collection-filter="{{ item.id }}" aria-pressed="false" aria-controls="collection-grid-{{ section.id }}">{{ item.settings.filter_label | default: item.settings.title | default: item.settings.collection.title | default: 'Collection' | escape }}</button>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if section.settings.show_sort %}
+    <div class="au-collection-sort"><label for="collection-sort-{{ section.id }}">Sort by</label><select id="collection-sort-{{ section.id }}" data-collection-sort><option value="featured">Featured</option><option value="az">Name: A–Z</option><option value="za">Name: Z–A</option><option value="newest">Newest</option></select></div>
+  {% endif %}
+</div>

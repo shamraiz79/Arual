@@ -16,7 +16,16 @@
         "heading": "Objects\nfor a More\nIntentional Life.",
         "text": "Thoughtfully designed essentials for your home, your rituals, and a more meaningful tomorrow.",
         "button": "Shop the Collection",
-        "link": ""
+        "link": "",
+        "show_seal": true,
+        "seal_top_text": "GOOD SPACES",
+        "seal_bottom_text": "BRIGHTER DAYS",
+        "seal_monogram": "A",
+        "seal_color": "#858278",
+        "seal_size": 110,
+        "seal_mobile_size": 64,
+        "seal_rotation": 0,
+        "seal_motion": true
       }
     },
     "aurel_benefits": {
@@ -205,7 +214,7 @@
         "heading": "Inspired\nby Nature.\nMade for\nModern Life.",
         "text": "We create thoughtfully designed essentials that bring beauty, function and intention into everyday life.",
         "button": "Our Story",
-        "link": ""
+        "link": "shopify://pages/our-story-page"
       }
     },
     "aurel_seasonal": {

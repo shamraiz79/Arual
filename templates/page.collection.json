@@ -1,0 +1,124 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aurel-collections-banner",
+      "settings": {}
+    },
+    "directory": {
+      "type": "aurel-collections-directory",
+      "settings": {
+        "source": "curated"
+      },
+      "blocks": {
+        "home": {
+          "type": "collection",
+          "settings": {
+            "title": "Home Essentials",
+            "description": "Build a calmer, more intentional home\nwith everyday essentials.",
+            "sample_image": "aurel-autumn.jpg",
+            "filter_label": "Home Essentials",
+            "show_filter": true
+          }
+        },
+        "candles": {
+          "type": "collection",
+          "settings": {
+            "title": "Candles & Fragrance",
+            "description": "Scents to slow down, ground you,\nand make home feel like home.",
+            "sample_image": "aurel-candle.jpg",
+            "filter_label": "Candles & Fragrance",
+            "show_filter": true
+          }
+        },
+        "textiles": {
+          "type": "collection",
+          "settings": {
+            "title": "Textiles",
+            "description": "Softness in every detail.\nThoughtfully made for everyday living.",
+            "sample_image": "aurel-textiles.jpg",
+            "filter_label": "Textiles",
+            "show_filter": true
+          }
+        },
+        "tabletop": {
+          "type": "collection",
+          "settings": {
+            "title": "Tabletop & Dining",
+            "description": "For more intentional meals\nand meaningful moments.",
+            "sample_image": "aurel-mug.jpg",
+            "filter_label": "Tabletop & Dining",
+            "show_filter": true
+          }
+        },
+        "decor": {
+          "type": "collection",
+          "settings": {
+            "title": "Decor & Objects",
+            "description": "Pieces that tell a story\nand bring beauty to the everyday.",
+            "sample_image": "aurel-vase.jpg",
+            "filter_label": "Decor & Objects",
+            "show_filter": true
+          }
+        },
+        "bags": {
+          "type": "collection",
+          "settings": {
+            "title": "Bags & Everyday Carry",
+            "description": "Beautiful function, always.\nDesigned to move with you.",
+            "sample_image": "aurel-bag.jpg",
+            "filter_label": "Bags & Carry",
+            "show_filter": true
+          }
+        },
+        "gifts": {
+          "type": "collection",
+          "settings": {
+            "title": "Gifts",
+            "description": "Meaningful pieces for the\npeople you care about.",
+            "sample_image": "aurel-gifts.png",
+            "filter_label": "Gifts",
+            "show_filter": false
+          }
+        },
+        "new": {
+          "type": "collection",
+          "settings": {
+            "title": "New Arrivals",
+            "description": "Fresh pieces for\na brighter tomorrow.",
+            "sample_image": "aurel-olive.jpg",
+            "filter_label": "New Arrivals",
+            "show_filter": false
+          }
+        }
+      },
+      "block_order": [
+        "home",
+        "candles",
+        "textiles",
+        "tabletop",
+        "decor",
+        "bags",
+        "gifts",
+        "new"
+      ]
+    },
+    "closing": {
+      "type": "aurel-collections-banner",
+      "settings": {
+        "layout": "closing",
+        "eager": false,
+        "eyebrow": "A kinder tomorrow",
+        "heading": "More Than Products.\nA More Intentional Life.",
+        "text": "Our collections are designed to bring beauty, function,\nand purpose into everyday living.",
+        "button": "Explore All Collections",
+        "link": "#all-collections",
+        "note": "Good\nSpaces.\nBrighter\nDays"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "directory",
+    "closing"
+  ]
+}
