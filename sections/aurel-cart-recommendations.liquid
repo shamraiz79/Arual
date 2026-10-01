@@ -1,0 +1,69 @@
+<section class="au au-cart-recommendations" aria-labelledby="cart-recommendations-{{ section.id }}">
+  <div class="au-cart-recommendations-heading"><h2 id="cart-recommendations-{{ section.id }}">{{ section.settings.heading | escape }}</h2><a class="au-text-link" href="{{ section.settings.link | default: routes.all_products_collection_url }}">View All <span aria-hidden="true">&rarr;</span></a></div>
+  <div class="au-cart-recommendations-grid">
+    {% for block in section.blocks %}{% assign product = block.settings.product %}
+      <article class="au-cart-recommendation" {{ block.shopify_attributes }}>
+        <a class="au-cart-recommendation-image" href="{{ product.url | default: routes.all_products_collection_url }}">{% assign card_image = block.settings.image | default: product.featured_image %}{% assign card_title = product.title | default: block.settings.title %}{% render 'aurel-image', image: card_image, fallback: block.settings.fallback, alt: card_title, sizes: '(min-width: 750px) 22vw, 45vw' %}</a>
+        <div><h3><a href="{{ product.url | default: routes.all_products_collection_url }}">{{ card_title | escape }}</a></h3>{% if product != blank %}<p>{{ product.price | money }}{% unless product.available %} · Sold out{% endunless %}</p>{% else %}<p class="au-cart-sample-label">Explore collection</p>{% endif %}
+          {% if product != blank and product.has_only_default_variant and product.available and product.requires_selling_plan != true %}
+            {% form 'product', product, class: 'au-cart-add-form' %}<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"><input type="hidden" name="quantity" value="{{ product.selected_or_first_available_variant.quantity_rule.min | default: 1 }}"><button type="submit" class="au-add" aria-label="Add {{ product.title | escape }} to cart">{% render 'aurel-icon', icon: 'plus' %}</button>{% endform %}
+          {% else %}<a class="au-add" href="{{ product.url | default: routes.all_products_collection_url }}" aria-label="View {{ card_title | escape }}">{% render 'aurel-icon', icon: 'plus' %}</a>{% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div><p class="au-cart-message" data-recommendation-message role="status" aria-live="polite"></p>
+</section>
+{% schema %}
+{
+  "name": "Cart - suggested products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You May Also Love"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "View all destination"
+    }
+  ],
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Suggested product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image override"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Sample title",
+          "default": "Aromatherapy Candle"
+        },
+        {
+          "type": "text",
+          "id": "fallback",
+          "label": "Sample image asset",
+          "default": "aurel-candle.jpg"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cart - suggested products"
+    }
+  ]
+}
+{% endschema %}

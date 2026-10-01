@@ -1,0 +1,117 @@
+<section class="au au-cart" data-au-cart data-item-count="{{ cart.item_count }}" data-section-id="{{ section.id }}" data-cart-url="{{ routes.cart_url }}" aria-labelledby="cart-items-title-{{ section.id }}">
+  <div data-cart-content>
+    {% if cart.item_count > 0 %}
+      <form action="{{ routes.cart_url }}" method="post" id="cart-form-{{ section.id }}" class="au-cart-layout" data-cart-form>
+        <div class="au-cart-items">
+          <div class="au-cart-heading"><h2 id="cart-items-title-{{ section.id }}" tabindex="-1">{{ section.settings.heading | escape }} ({{ cart.item_count }})</h2><button type="button" class="au-cart-clear" data-cart-clear hidden>Clear Cart</button></div>
+          {% for item in cart.items %}
+            {% liquid
+              assign qty_min = item.variant.quantity_rule.min | default: 1
+              assign qty_step = item.variant.quantity_rule.increment | default: 1
+            %}
+            <article class="au-cart-row" data-cart-row data-key="{{ item.key | escape }}">
+              <a class="au-cart-image" href="{{ item.url }}">{% if item.image %}{{ item.image | image_url: width: 320 | image_tag: loading: 'lazy', alt: item.product.title }}{% else %}{{ 'product-1' | placeholder_svg_tag }}{% endif %}</a>
+              <div class="au-cart-item-copy"><h3><a href="{{ item.url }}">{{ item.product.title | escape }}</a></h3>
+                {% unless item.product.has_only_default_variant %}<p class="au-cart-variant">{{ item.variant.title | escape }}</p>{% endunless %}
+                {% if item.selling_plan_allocation %}<p class="au-cart-variant">{{ item.selling_plan_allocation.selling_plan.name | escape }}</p>{% endif %}
+                {% for property in item.properties %}{% assign first_char = property.first | slice: 0 %}{% if property.last != blank and first_char != '_' %}<p class="au-cart-property">{{ property.first | escape }}: {% if property.last contains '/uploads/' %}<a href="{{ property.last | escape }}">View uploaded file</a>{% else %}{{ property.last | escape }}{% endif %}</p>{% endif %}{% endfor %}
+                <p class="au-cart-line-price">{% if item.original_line_price != item.final_line_price %}<s>{{ item.original_line_price | money }}</s> {% endif %}{{ item.final_line_price | money }}</p>
+                {% for discount in item.line_level_discount_allocations %}<p class="au-cart-discount">{{ discount.discount_application.title | escape }} (−{{ discount.amount | money }})</p>{% endfor %}
+                {% if item.unit_price_measurement %}<p class="au-cart-property">{{ item.unit_price | money }} / {% if item.unit_price_measurement.reference_value != 1 %}{{ item.unit_price_measurement.reference_value }}{% endif %}{{ item.unit_price_measurement.reference_unit }}</p>{% endif %}
+              </div>
+              <div class="au-cart-quantity"><button type="button" data-quantity-step="-1" aria-label="Decrease quantity of {{ item.product.title | escape }}" hidden>−</button><label class="au-visually-hidden" for="quantity-{{ section.id }}-{{ forloop.index }}">Quantity for {{ item.product.title | escape }}</label><input id="quantity-{{ section.id }}-{{ forloop.index }}" name="updates[]" type="number" value="{{ item.quantity }}" min="{{ qty_min }}" step="{{ qty_step }}" {% if item.variant.quantity_rule.max %}max="{{ item.variant.quantity_rule.max }}"{% endif %} data-cart-quantity data-current="{{ item.quantity }}" inputmode="numeric"><button type="button" data-quantity-step="1" aria-label="Increase quantity of {{ item.product.title | escape }}" hidden>+</button></div>
+              <a class="au-cart-remove" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" data-cart-remove aria-label="Remove {{ item.product.title | escape }}">&times;</a>
+            </article>
+          {% endfor %}
+          <button type="submit" name="update" class="au-button au-cart-update" data-cart-update>Update Cart</button>
+        </div>
+        <aside class="au-cart-summary" aria-label="Order summary"><h2>{{ section.settings.summary_heading | escape }}</h2>
+          <dl><div><dt>Subtotal ({{ cart.item_count }} {% if cart.item_count == 1 %}item{% else %}items{% endif %})</dt><dd>{{ cart.items_subtotal_price | money }}</dd></div>
+          {% for discount in cart.cart_level_discount_applications %}<div class="au-cart-discount"><dt>{{ discount.title | escape }}</dt><dd>−{{ discount.total_allocated_amount | money }}</dd></div>{% endfor %}
+          <div><dt>Shipping</dt><dd>{% if cart.requires_shipping %}Calculated at checkout{% else %}Not required{% endif %}</dd></div><div><dt>Taxes</dt><dd>{% if cart.taxes_included %}Included{% else %}Calculated at checkout{% endif %}</dd></div>
+          <div class="au-cart-total"><dt>Estimated Total</dt><dd>{{ cart.total_price | money_with_currency }}</dd></div></dl>
+          <button type="submit" name="checkout" class="au-button au-cart-checkout">{{ section.settings.checkout_label | escape }} <span aria-hidden="true">&rarr;</span></button>
+          {% if section.settings.show_payments %}<ul class="au-cart-payments" aria-label="Accepted payment methods">{% for type in shop.enabled_payment_types %}<li>{{ type | payment_type_svg_tag }}</li>{% endfor %}</ul>{% endif %}
+          {% assign threshold = section.settings.shipping_threshold | times: 100 %}
+          {% if section.settings.show_shipping and cart.requires_shipping and threshold > 0 and cart.currency.iso_code == shop.currency %}
+            {% assign remaining = threshold | minus: cart.total_price %}{% assign progress = cart.total_price | times: 100.0 | divided_by: threshold | at_most: 100 %}
+            <div class="au-cart-shipping"><p>{% render 'aurel-icon', icon: 'leaf' %}<span>{% if remaining > 0 %}You’re {{ remaining | money }} away from free shipping!{% else %}Free shipping threshold reached!{% endif %}</span></p><progress value="{{ progress }}" max="100" aria-label="Progress toward free shipping">{{ progress }}%</progress></div>
+          {% endif %}
+        </aside>
+      </form>
+    {% else %}
+      <div class="au-cart-empty"><h2 id="cart-items-title-{{ section.id }}" tabindex="-1">{{ section.settings.empty_heading | escape }}</h2><p>{{ section.settings.empty_text | escape }}</p><a class="au-button" href="{{ section.settings.continue_link | default: routes.all_products_collection_url }}">Continue Shopping <span aria-hidden="true">&rarr;</span></a></div>
+    {% endif %}
+  </div>
+  <p class="au-cart-message" data-cart-message role="status" aria-live="polite" aria-atomic="true"></p>
+</section>
+{% schema %}
+{
+  "name": "Cart - items and summary",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Cart"
+    },
+    {
+      "type": "text",
+      "id": "summary_heading",
+      "label": "Summary heading",
+      "default": "Order Summary"
+    },
+    {
+      "type": "text",
+      "id": "checkout_label",
+      "label": "Checkout button",
+      "default": "Proceed to Checkout"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payments",
+      "label": "Show accepted payment icons",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Free shipping progress"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shipping",
+      "label": "Show free shipping progress",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "shipping_threshold",
+      "label": "Threshold in store currency",
+      "default": 75,
+      "info": "Match your actual shipping rates. This display does not create a free shipping rate. Hidden for other presentment currencies."
+    },
+    {
+      "type": "text",
+      "id": "empty_heading",
+      "label": "Empty cart heading",
+      "default": "Your cart is waiting for something thoughtful."
+    },
+    {
+      "type": "textarea",
+      "id": "empty_text",
+      "label": "Empty cart description",
+      "default": "Explore everyday essentials for a calmer, more intentional home."
+    },
+    {
+      "type": "url",
+      "id": "continue_link",
+      "label": "Continue shopping destination"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cart - items and summary"
+    }
+  ]
+}
+{% endschema %}

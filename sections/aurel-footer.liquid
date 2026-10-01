@@ -1,3 +1,4 @@
+{% unless request.page_type == 'cart' %}
 <div class="au au-newsletter">
   <h2>{{ section.settings.newsletter_heading | newline_to_br }}</h2><span class="au-rule"></span>
   <p>{{ section.settings.newsletter_text | escape }}</p>
@@ -8,6 +9,7 @@
     {% if form.errors %}<div id="aurel-newsletter-error" class="au-form-message" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
   {% endform %}
 </div>
+{% endunless %}
 <div class="au au-footer">
   <div class="au-footer-brand"><a class="au-logo" href="{{ routes.root_url }}">{{ section.settings.brand | escape }}</a><p>Thoughtful living for a brighter tomorrow.</p>{% if section.settings.instagram != blank %}<a class="au-social" href="{{ section.settings.instagram }}" aria-label="Aurél on Instagram">{% render 'aurel-icon', icon: 'instagram' %}</a>{% endif %}</div>
   {% for block in section.blocks %}

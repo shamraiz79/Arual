@@ -190,6 +190,7 @@
         const result = await response.json();
         if (!response.ok) throw new Error(result.description || result.message || 'This item could not be added. Please try again.');
         added = true;
+        if (document.body.dataset.auCartDestination && !document.querySelector('[data-au-cart]')) { location.assign(document.body.dataset.auCartDestination); return; }
         if (status) status.textContent = 'Added to cart';
         const cartResponse = await fetch(base + 'cart.js', { headers: { Accept: 'application/json' }, cache: 'no-store' });
         if (!cartResponse.ok) throw new Error('Cart refresh failed');

@@ -1,0 +1,46 @@
+<section class="au au-cart-banner" aria-labelledby="cart-title-{{ section.id }}">
+  {% render 'aurel-image', image: section.settings.image, fallback: 'aurel-story-hero.png', alt: '', eager: true, sizes: '100vw' %}
+  <div><p class="au-eyebrow">{{ section.settings.eyebrow | escape }}</p><h1 id="cart-title-{{ section.id }}">{{ section.settings.heading | escape | newline_to_br }}</h1><p class="au-cart-banner__text">{{ section.settings.text | escape }}</p></div>
+  {% if section.settings.note != blank %}<p class="au-cart-banner__note">{{ section.settings.note | escape | newline_to_br }}</p>{% endif %}
+</section>
+{% schema %}
+{
+  "name": "Cart - banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Your cart"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Thoughtful Choices\nLead to a Kinder Tomorrow."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Sustainable living starts at home — and you’re making it happen."
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Decorative note",
+      "default": "Good\nSpaces.\nBrighter\nDays"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cart - banner"
+    }
+  ]
+}
+{% endschema %}
