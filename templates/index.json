@@ -1,52 +1,320 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "aurel_hero": { "type": "aurel-hero", "settings": {} },
+    "aurel_hero": {
+      "type": "aurel-hero",
+      "settings": {
+        "eyebrow": "MODERN LIVING. TIMELESS VALUES",
+        "heading": "Objects\nfor a More\nIntentional Life.",
+        "text": "Thoughtfully designed essentials for your home, your rituals, and a more meaningful tomorrow.",
+        "button": "Shop the Collection",
+        "link": ""
+      }
+    },
     "aurel_benefits": {
       "type": "aurel-benefits",
       "blocks": {
-        "materials": { "type": "benefit", "settings": { "icon": "leaf", "title": "Sustainable materials", "text": "Better for you, kinder to the planet" } },
-        "shipping": { "type": "benefit", "settings": { "icon": "truck", "title": "Free shipping", "text": "On all orders over $75" } },
-        "returns": { "type": "benefit", "settings": { "icon": "box", "title": "30-day returns", "text": "Hassle-free shopping" } },
-        "community": { "type": "benefit", "settings": { "icon": "heart", "title": "Thousands of happy homes", "text": "Loved by our community" } }
+        "materials": {
+          "type": "benefit",
+          "settings": {
+            "icon": "leaf",
+            "title": "Sustainable materials",
+            "text": "Better for you, kinder to the planet"
+          }
+        },
+        "shipping": {
+          "type": "benefit",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping",
+            "text": "On all orders over $75"
+          }
+        },
+        "returns": {
+          "type": "benefit",
+          "settings": {
+            "icon": "box",
+            "title": "30-day returns",
+            "text": "Hassle-free shopping"
+          }
+        },
+        "community": {
+          "type": "benefit",
+          "settings": {
+            "icon": "heart",
+            "title": "Thousands of happy homes",
+            "text": "Loved by our community"
+          }
+        }
       },
-      "block_order": ["materials", "shipping", "returns", "community"], "settings": {}
+      "block_order": [
+        "materials",
+        "shipping",
+        "returns",
+        "community"
+      ],
+      "settings": {}
     },
     "aurel_categories": {
       "type": "aurel-grid",
-      "settings": { "mode": "categories", "heading": "Shop\nby Category", "text": "Discover timeless pieces designed for everyday living.", "button": "Explore All", "link": "shopify://collections" },
       "blocks": {
-        "home": { "type": "card", "settings": { "title": "Home Essentials", "fallback": "aurel-mug.jpg" } },
-        "candles": { "type": "card", "settings": { "title": "Candles & Fragrance", "fallback": "aurel-candle.jpg" } },
-        "textiles": { "type": "card", "settings": { "title": "Textiles", "fallback": "aurel-textiles.jpg" } },
-        "carry": { "type": "card", "settings": { "title": "Everyday Carry", "fallback": "aurel-bag.jpg" } }
-      }, "block_order": ["home", "candles", "textiles", "carry"]
+        "home": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "collection": "",
+            "article": "",
+            "title": "Home Essentials",
+            "caption": "",
+            "link": "",
+            "fallback": "aurel-mug.jpg"
+          }
+        },
+        "candles": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "collection": "",
+            "article": "",
+            "title": "Candles & Fragrance",
+            "caption": "",
+            "link": "",
+            "fallback": "aurel-candle.jpg"
+          }
+        },
+        "textiles": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "collection": "",
+            "article": "",
+            "title": "Textiles",
+            "caption": "",
+            "link": "",
+            "fallback": "aurel-textiles.jpg"
+          }
+        },
+        "carry": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "collection": "",
+            "article": "",
+            "title": "Everyday Carry",
+            "caption": "",
+            "link": "",
+            "fallback": "aurel-bag.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "home",
+        "candles",
+        "textiles",
+        "carry"
+      ],
+      "settings": {
+        "mode": "categories",
+        "eyebrow": "",
+        "heading": "Shop\nby Category",
+        "text": "Discover timeless pieces designed for everyday living.",
+        "button": "Explore All",
+        "link": "shopify://collections",
+        "blog": ""
+      }
     },
     "aurel_products": {
       "type": "aurel-grid",
-      "settings": { "mode": "products", "heading": "Featured\nProducts", "text": "A curated selection of our most-loved pieces.", "button": "Shop All Products" },
       "blocks": {
-        "vase": { "type": "card", "settings": { "title": "Stone Ceramic Vase", "caption": "$48.00", "fallback": "aurel-vase.jpg" } },
-        "candle": { "type": "card", "settings": { "title": "Santal Candle", "caption": "$36.00", "fallback": "aurel-candle.jpg" } },
-        "blanket": { "type": "card", "settings": { "title": "Linen Throw Blanket", "caption": "$98.00", "fallback": "aurel-textiles.jpg" } },
-        "glass": { "type": "card", "settings": { "title": "Amber Glass Set", "caption": "$52.00", "fallback": "aurel-glass.jpg" } }
-      }, "block_order": ["vase", "candle", "blanket", "glass"]
+        "vase": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "collection": "",
+            "article": "",
+            "title": "Stone Ceramic Vase",
+            "caption": "$48.00",
+            "link": "",
+            "fallback": "aurel-vase.jpg"
+          }
+        },
+        "candle": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "collection": "",
+            "article": "",
+            "title": "Santal Candle",
+            "caption": "$36.00",
+            "link": "",
+            "fallback": "aurel-candle.jpg"
+          }
+        },
+        "blanket": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "collection": "",
+            "article": "",
+            "title": "Linen Throw Blanket",
+            "caption": "$98.00",
+            "link": "",
+            "fallback": "aurel-textiles.jpg"
+          }
+        },
+        "glass": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "collection": "",
+            "article": "",
+            "title": "Amber Glass Set",
+            "caption": "$52.00",
+            "link": "",
+            "fallback": "aurel-glass.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "vase",
+        "candle",
+        "blanket",
+        "glass"
+      ],
+      "settings": {
+        "mode": "products",
+        "eyebrow": "",
+        "heading": "Featured\nProducts",
+        "text": "A curated selection of our most-loved pieces.",
+        "button": "Shop All Products",
+        "link": "",
+        "blog": ""
+      }
     },
-    "aurel_story": { "type": "aurel-story", "settings": {} },
-    "aurel_seasonal": { "type": "aurel-seasonal", "settings": {} },
+    "aurel_story": {
+      "type": "aurel-story",
+      "settings": {
+        "heading": "Inspired\nby Nature.\nMade for\nModern Life.",
+        "text": "We create thoughtfully designed essentials that bring beauty, function and intention into everyday life.",
+        "button": "Our Story",
+        "link": ""
+      }
+    },
+    "aurel_seasonal": {
+      "type": "aurel-seasonal",
+      "settings": {
+        "heading": "The\nAutumn Collection",
+        "text": "Rich textures. Warmer days. A more mindful home.",
+        "side_heading": "Seasonal pieces\nfor intentional\nliving.",
+        "link": ""
+      }
+    },
     "aurel_community": {
-      "type": "aurel-testimonials", "settings": {},
-      "blocks": { "emily": { "type": "quote", "settings": { "quote": "The quality, the details, the entire experience feels so thoughtful. These pieces have truly made our house feel like home.", "author": "Emily R." } } },
-      "block_order": ["emily"]
+      "type": "aurel-testimonials",
+      "blocks": {
+        "quote_ThhbYa": {
+          "type": "quote",
+          "settings": {
+            "quote": "“We wanted furniture that would last, but what we got was so much more. Every piece has a story, and they’ve transformed our living space into a sanctuary we never want to leave.” — Marcus T.",
+            "author": ""
+          }
+        },
+        "quote_9dgHwa": {
+          "type": "quote",
+          "settings": {
+            "quote": "“From the seamless process to the incredible craftsmanship, you can tell so much care goes into every single item. It completely changed the energy of our space.” — Sophia L.",
+            "author": ""
+          }
+        },
+        "emily": {
+          "type": "quote",
+          "settings": {
+            "quote": "“It’s rare to find things that are both stunningly beautiful and deeply comforting. These designs brought the perfect balance of warmth and sophistication to our home.” — David & Linnea K.",
+            "author": "Emily R."
+          }
+        }
+      },
+      "block_order": [
+        "quote_ThhbYa",
+        "quote_9dgHwa",
+        "emily"
+      ],
+      "settings": {
+        "heading": "From Our Community"
+      }
     },
     "aurel_journal": {
       "type": "aurel-grid",
-      "settings": { "mode": "journal", "eyebrow": "The Journal", "heading": "Stories for a\nMore Intentional Life.", "button": "Read the Journal" },
       "blocks": {
-        "calm": { "type": "card", "settings": { "title": "Creating a Calmer Home", "caption": "Sep 12, 2024", "fallback": "aurel-community.jpg" } },
-        "mornings": { "type": "card", "settings": { "title": "The Art of Slower Mornings", "caption": "Sep 3, 2024", "fallback": "aurel-autumn.jpg" } },
-        "living": { "type": "card", "settings": { "title": "Sustainable Living, Simplified", "caption": "Aug 20, 2024", "fallback": "aurel-olive.jpg" } }
-      }, "block_order": ["calm", "mornings", "living"]
+        "calm": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "collection": "",
+            "article": "",
+            "title": "Creating a Calmer Home",
+            "caption": "Sep 12, 2024",
+            "link": "",
+            "fallback": "aurel-community.jpg"
+          }
+        },
+        "mornings": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "collection": "",
+            "article": "",
+            "title": "The Art of Slower Mornings",
+            "caption": "Sep 3, 2024",
+            "link": "",
+            "fallback": "aurel-autumn.jpg"
+          }
+        },
+        "living": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "collection": "",
+            "article": "",
+            "title": "Sustainable Living, Simplified",
+            "caption": "Aug 20, 2024",
+            "link": "",
+            "fallback": "aurel-olive.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "calm",
+        "mornings",
+        "living"
+      ],
+      "settings": {
+        "mode": "journal",
+        "eyebrow": "The Journal",
+        "heading": "Stories for a\nMore Intentional Life.",
+        "text": "",
+        "button": "Read the Journal",
+        "link": "",
+        "blog": ""
+      }
     }
   },
-  "order": ["aurel_hero", "aurel_benefits", "aurel_categories", "aurel_products", "aurel_story", "aurel_seasonal", "aurel_community", "aurel_journal"]
+  "order": [
+    "aurel_hero",
+    "aurel_benefits",
+    "aurel_categories",
+    "aurel_products",
+    "aurel_story",
+    "aurel_seasonal",
+    "aurel_community",
+    "aurel_journal"
+  ]
 }

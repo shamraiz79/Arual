@@ -1,0 +1,98 @@
+<section class="au au-story-highlights au-story-highlights--{{ section.settings.layout }}" id="{{ section.settings.anchor | default: section.id | handleize }}" aria-label="{{ section.settings.label | escape }}">
+  {% for block in section.blocks %}<div class="au-story-highlight" {{ block.shopify_attributes }}>
+    {% if section.settings.layout == 'values' %}{% render 'aurel-icon', icon: block.settings.icon %}<h3>{{ block.settings.heading | escape }}</h3>{% else %}<p class="au-story-stat">{{ block.settings.heading | escape }}</p>{% endif %}
+    <p class="au-story-highlight__text">{{ block.settings.text | escape | newline_to_br }}</p>
+  </div>{% endfor %}
+</section>
+{% schema %}
+{
+  "name": "Story - values and stats",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "values",
+          "label": "Values with icons"
+        },
+        {
+          "value": "stats",
+          "label": "Statistics"
+        }
+      ],
+      "default": "values"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Section anchor",
+      "default": "our-values"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Accessible section label",
+      "default": "Our values"
+    }
+  ],
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Value or statistic",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "home",
+              "label": "Home"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            }
+          ],
+          "default": "leaf"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading or number",
+          "default": "Thoughtful Materials"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "We choose better, for you\nand the planet."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story - values and stats",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

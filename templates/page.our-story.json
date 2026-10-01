@@ -1,0 +1,161 @@
+{
+  "sections": {
+    "story_hero": {
+      "type": "aurel-story-banner",
+      "settings": {
+        "layout": "hero",
+        "eyebrow": "Our story",
+        "heading": "A More\nIntentional\nTomorrow.",
+        "text": "A story of thoughtful choices, timeless design, and a deeper care for the spaces we call home.",
+        "note": "Good\nSpaces.\nBrighter\nDays."
+      }
+    },
+    "story_belief": {
+      "type": "aurel-story-editorial",
+      "settings": {
+        "scene": "craft",
+        "image_side": "left",
+        "anchor": "our-journey",
+        "caption": "For a kinder\ntomorrow",
+        "button": "Our Journey",
+        "link": "#story-founder",
+        "image_alt": "Hands arranging olive branches in a handmade ceramic vase"
+      }
+    },
+    "story_nature": {
+      "type": "aurel-story-editorial",
+      "settings": {
+        "scene": "nature",
+        "image_side": "right",
+        "anchor": "our-inspiration",
+        "eyebrow": "Inspired by nature.\nGuided by purpose.",
+        "heading": "Rooted in a\nDeeper Why.",
+        "text": "<p>Nature has always been our greatest inspiration. From the calming textures to the earthy tones, we create pieces that bring the outdoors in — helping you feel more grounded, more present, and more connected to what matters most.</p>",
+        "caption": "Natural.\nBeautiful.\nMeaningful.\nYours.",
+        "button": "Our Values",
+        "link": "#our-values",
+        "image_alt": "A stone house nestled in sunlit Mediterranean hills and olive groves"
+      }
+    },
+    "story_values": {
+      "type": "aurel-story-highlights",
+      "settings": {
+        "layout": "values",
+        "anchor": "our-values",
+        "label": "Our values"
+      },
+      "blocks": {
+        "materials": {
+          "type": "item",
+          "settings": {
+            "icon": "leaf",
+            "heading": "Thoughtful Materials",
+            "text": "We choose better, for you\nand the planet."
+          }
+        },
+        "design": {
+          "type": "item",
+          "settings": {
+            "icon": "home",
+            "heading": "Timeless Design",
+            "text": "Pieces made to live with,\nnot just for a season."
+          }
+        },
+        "tomorrow": {
+          "type": "item",
+          "settings": {
+            "icon": "heart",
+            "heading": "A Kinder Tomorrow",
+            "text": "Small choices create\na bigger, brighter future."
+          }
+        }
+      },
+      "block_order": [
+        "materials",
+        "design",
+        "tomorrow"
+      ]
+    },
+    "story_founder": {
+      "type": "aurel-story-editorial",
+      "settings": {
+        "scene": "founder",
+        "image_side": "right",
+        "anchor": "story-founder",
+        "eyebrow": "A note from our founder",
+        "heading": "This Brand\nIs Personal.",
+        "text": "<p>Aurél is more than a business — it’s a reflection of my belief that a calmer, more intentional life is possible, and that it starts at home. Every piece we create is chosen with care, designed with purpose, and inspired by the places and moments that make life feel meaningful.</p>",
+        "signature": "Elise",
+        "founder_name": "Elise Martin",
+        "founder_role": "Founder, Aurél",
+        "quote": "“A more mindful home for a brighter tomorrow.”",
+        "image_alt": "A woman in a cream knit sweater holding a ceramic mug in warm sunlight"
+      }
+    },
+    "story_commitment": {
+      "type": "aurel-story-banner",
+      "settings": {
+        "layout": "commitment",
+        "eyebrow": "Our commitment",
+        "heading": "Better Homes.\nA Brighter Tomorrow.",
+        "text": "We’re committed to creating high-quality, sustainably minded essentials that bring beauty, function and intention into everyday life.",
+        "button": "Our Impact",
+        "link": "#story-stats",
+        "show_seal": true
+      }
+    },
+    "story_stats": {
+      "type": "aurel-story-highlights",
+      "settings": {
+        "layout": "stats",
+        "anchor": "story-stats",
+        "label": "Our impact"
+      },
+      "blocks": {
+        "homes": {
+          "type": "item",
+          "settings": {
+            "heading": "10K+",
+            "text": "Happy homes"
+          }
+        },
+        "collections": {
+          "type": "item",
+          "settings": {
+            "heading": "25+",
+            "text": "Conscious collections"
+          }
+        },
+        "sourced": {
+          "type": "item",
+          "settings": {
+            "heading": "100%",
+            "text": "Thoughtfully sourced"
+          }
+        },
+        "tomorrow": {
+          "type": "item",
+          "settings": {
+            "heading": "1 BRIGHTER",
+            "text": "Tomorrow together"
+          }
+        }
+      },
+      "block_order": [
+        "homes",
+        "collections",
+        "sourced",
+        "tomorrow"
+      ]
+    }
+  },
+  "order": [
+    "story_hero",
+    "story_belief",
+    "story_nature",
+    "story_values",
+    "story_founder",
+    "story_commitment",
+    "story_stats"
+  ]
+}

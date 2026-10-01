@@ -1,0 +1,82 @@
+/* Our Story editorial page. Shared brand primitives live in aurel.css. */
+.au-story-page{background:#f6f4ef}
+.au-story-banner{position:relative;isolation:isolate;display:flex;align-items:center;min-height:520px;overflow:hidden}
+.au-story-banner>.au-image{position:absolute;inset:0;z-index:-2;object-position:center}
+.au-story-banner--hero::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#e0d3bedb 0%,#e0d3bec4 38%,#e0d3be00 65%)}
+.au-story-banner__copy{width:50%;padding:65px 0 55px 8%;max-width:730px}
+.au-story-banner .au-eyebrow{color:inherit;font-size:11px;margin-bottom:20px}
+.au-story-banner h1{font-size:clamp(52px,5.9vw,86px);line-height:.98;letter-spacing:-.045em;text-wrap:initial}
+.au-story-banner .au-rule{margin:26px 0 22px;width:45px}
+.au-story-banner__description{max-width:420px;font-size:17px;line-height:1.5}
+.au-story-banner__note{position:absolute;right:7%;top:27%;font:italic 31px/1.3 'Brush Script MT','Segoe Script',Georgia,serif;transform:rotate(-12deg);text-align:center;max-width:160px}
+.au-story-editorial{display:grid;grid-template-columns:1fr 1fr;gap:0;padding-top:30px}
+.au-story-editorial__media{position:relative;min-height:470px;overflow:hidden}
+.au-story-editorial__media>.au-image{position:absolute;inset:0;object-position:center}
+.au-story-editorial__copy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:45px 11%;min-width:0}
+.au-story-editorial__copy>.au-eyebrow{font-size:10px;line-height:1.8;letter-spacing:.23em;margin-bottom:20px}
+.au-story-editorial h2{font-size:clamp(34px,3.8vw,55px);line-height:1.04;letter-spacing:-.045em;text-wrap:initial;margin-bottom:22px}
+.au-story-prose{font-size:15px;line-height:1.6;color:#55544d;max-width:490px}
+.au-story-prose p+p{margin-top:25px}
+.au-story-prose a{text-decoration:underline;text-underline-offset:3px}
+.au-story-editorial .au-button{margin-top:25px;min-height:46px}
+.au-story-editorial .au-text-link{margin-top:22px}
+.au-story-editorial__caption{position:absolute;bottom:10%;left:9%;font-size:12px;line-height:2;letter-spacing:.3em;text-transform:uppercase;color:white;text-shadow:0 1px 10px #0008}
+.au-story-editorial--right .au-story-editorial__media{grid-column:2;grid-row:1}
+.au-story-editorial--right .au-story-editorial__copy{grid-column:1;grid-row:1}
+.au-story-editorial--nature{grid-template-columns:40% 60%;padding-top:24px}
+.au-story-editorial--nature .au-story-editorial__media{min-height:365px}
+.au-story-editorial--nature .au-story-editorial__copy{padding:35px 15%}
+.au-story-editorial--nature .au-story-editorial__caption{left:auto;right:7%;bottom:7%;text-align:right}
+.au-story-editorial--founder{grid-template-columns:47.5% 52.5%;padding:12px 0 24px}
+.au-story-editorial--founder .au-story-editorial__copy{padding:35px 13%}
+.au-story-editorial--founder .au-story-editorial__media{min-height:410px}
+.au-story-editorial--founder .au-image{object-position:70% center}
+.au-story-editorial__quote{position:absolute;left:7%;top:17%;max-width:160px;font:italic 25px/1.25 Georgia,serif;color:#f6f4ef;text-shadow:0 1px 12px #0005}
+.au-story-editorial__copy>.au-rule{margin:18px 0 8px;width:36px;opacity:.35}
+.au-story-signature{font:italic 48px/1.2 'Brush Script MT','Segoe Script',Georgia,serif;transform:rotate(-8deg)}
+.au-story-founder-name{font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-top:9px!important;margin-left:45px!important}
+.au-story-founder-role{font-size:11px;color:#55544d;margin-left:45px!important}
+.au-story-highlights{display:flex;padding:32px 6%;border-bottom:1px solid #e5e1d9}
+.au-story-highlight{flex:1;min-width:0;text-align:center;padding:0 24px;border-left:1px solid #cac6bc}
+.au-story-highlight:first-child{border-left:0}
+.au-story-highlight>.au-icon{height:39px;width:39px;margin:0 auto 12px}
+.au-story-highlight h3{font-size:23px;letter-spacing:-.025em;margin-bottom:10px}
+.au-story-highlight__text{font-size:13px;line-height:1.6;color:#55544d}
+.au-story-banner--commitment{min-height:315px;justify-content:center}
+.au-story-banner--commitment>.au-image{object-position:left 45%}
+.au-story-banner--commitment::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#f2e9da00,#eee5d5ed 33%,#eee5d5e6 75%,#eee5d566)}
+.au-story-banner--commitment .au-story-banner__copy{width:60%;max-width:680px;padding:38px 20px;text-align:center}
+.au-story-banner--commitment .au-eyebrow{font-size:10px;margin-bottom:15px}
+.au-story-banner--commitment h2{font-size:43px;line-height:1.05;margin-bottom:18px}
+.au-story-banner--commitment .au-story-banner__description{font-size:14px;max-width:480px;margin:auto}
+.au-story-banner--commitment .au-button{margin-top:20px;min-height:43px;font-size:12px;padding:12px 30px}
+.au-story-brand-seal{position:absolute;right:5%;top:35px;width:125px;height:125px;fill:currentColor;transform:rotate(15deg)}
+.au-story-highlights--stats{padding:35px 5%;border:0}
+.au-story-stat{font:38px/1.1 Georgia,serif;letter-spacing:-.045em;white-space:nowrap}
+.au-story-highlights--stats .au-story-highlight__text{font-size:9px;letter-spacing:.12em;text-transform:uppercase;margin-top:14px}
+.au-story-page .au-newsletter{background:#eeeae2;color:#292923;grid-template-columns:1.2fr 45px 1.5fr 1.8fr;padding:35px 6%;gap:25px}
+.au-story-page .au-newsletter h2{font-size:25px}
+.au-story-page .au-newsletter h2 br{display:none}
+.au-story-page .au-newsletter>p{color:#292923}
+.au-story-page .au-email-field{border:0;background:#fff}
+.au-story-page .au-email-field input{background:#fff}
+.au-story-page .au-email-field button{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;background:#292923;color:#f6f4ef;width:auto;gap:14px;padding:0 20px;font-size:12px}
+.au-story-page .au-footer{padding-top:45px;padding-bottom:65px}
+.au-story-page .au-main-nav a[aria-current=page]{border-bottom-color:currentColor}
+@media(min-width:1600px){.au-story-banner{min-height:600px}.au-story-banner--commitment{min-height:350px}.au-story-editorial__media{min-height:540px}}
+@media(max-width:1100px){
+.au-story-banner{min-height:440px}.au-story-banner__copy{padding-left:7%;width:57%}.au-story-banner__description{font-size:15px;max-width:330px}.au-story-banner__note{right:5%;font-size:26px}
+.au-story-editorial__copy{padding:35px 9%}.au-story-editorial__media{min-height:430px}.au-story-prose{font-size:14px}.au-story-editorial--nature .au-story-editorial__copy{padding:30px 12%}.au-story-editorial--founder .au-story-editorial__copy{padding:30px 10%}
+.au-story-editorial__quote{font-size:21px;max-width:125px;left:5%}.au-story-highlight{padding:0 16px}.au-story-highlight h3{font-size:21px}.au-story-banner--commitment{min-height:310px}.au-story-brand-seal{width:95px;height:95px;right:3%}.au-story-stat{font-size:32px}.au-story-page .au-newsletter{grid-template-columns:1fr 1.3fr 1.5fr}.au-story-page .au-newsletter>.au-rule{display:none}
+}
+@media(max-width:749px){
+.au-story-banner{min-height:570px;align-items:flex-end}.au-story-banner>.au-image{object-position:67% center}.au-story-banner--hero::before{background:linear-gradient(0deg,#e5d8c6f5 0%,#e5d8c6c9 48%,#e5d8c600 100%)}.au-story-banner__copy{width:100%;padding:190px 7% 36px}.au-story-banner h1{font-size:clamp(46px,10vw,68px)}.au-story-banner .au-eyebrow{font-size:9px;margin-bottom:16px}.au-story-banner .au-rule{margin:20px 0 17px}.au-story-banner__description{max-width:420px}.au-story-banner__note{top:28px;right:8%;font-size:23px}
+.au-story-editorial,.au-story-editorial--nature,.au-story-editorial--founder{grid-template-columns:1fr;padding-top:18px}.au-story-editorial .au-story-editorial__media{grid-column:1;grid-row:auto;min-height:0;aspect-ratio:1.25}.au-story-editorial .au-story-editorial__copy{grid-column:1;grid-row:auto;padding:34px 7% 38px}.au-story-editorial h2{font-size:36px}.au-story-prose{font-size:14px;max-width:none}.au-story-editorial__copy>.au-eyebrow{font-size:9px;margin-bottom:16px}.au-story-editorial--nature .au-story-editorial__media{aspect-ratio:1.5}.au-story-editorial--founder .au-story-editorial__media{aspect-ratio:1.25}.au-story-editorial__quote{font-size:22px;left:6%;max-width:120px}.au-story-editorial__caption{font-size:10px}
+.au-story-highlights--values{flex-direction:column;padding:8px 7%}.au-story-highlights--values .au-story-highlight{border-left:0;border-top:1px solid #d7d2c8;padding:25px 12px}.au-story-highlights--values .au-story-highlight:first-child{border:0}.au-story-highlight>.au-icon{height:34px;width:34px}.au-story-highlight h3{font-size:24px}
+.au-story-banner--commitment{min-height:380px;align-items:center}.au-story-banner--commitment::before{background:#eee5d5d9}.au-story-banner--commitment .au-story-banner__copy{width:100%;padding:38px 7%}.au-story-banner--commitment h2{font-size:35px}.au-story-brand-seal{position:relative;right:auto;top:auto;width:65px;height:65px;margin:0 auto 26px}.au-story-banner--commitment{flex-direction:column}.au-story-banner--commitment .au-story-banner__copy{padding-bottom:22px}
+.au-story-highlights--stats{display:grid;grid-template-columns:1fr 1fr;padding:14px 6%}.au-story-highlights--stats .au-story-highlight{padding:24px 10px}.au-story-highlights--stats .au-story-highlight:nth-child(3){border-left:0}.au-story-highlights--stats .au-story-highlight:nth-child(n+3){border-top:1px solid #cac6bc}.au-story-stat{font-size:clamp(20px,6vw,30px)}.au-story-highlights--stats .au-story-highlight__text{font-size:8px}
+.au-story-page .au-newsletter{grid-template-columns:1fr;padding:30px 7%;gap:18px}.au-story-page .au-newsletter h2{font-size:28px}.au-story-page .au-newsletter>p{max-width:350px}.au-story-page .au-newsletter-form{grid-column:auto}.au-story-page .au-email-field button{padding:0 16px;gap:8px}
+}
+@media(prefers-reduced-motion:no-preference){.au-story-editorial__media>.au-image{transition:transform 1.2s ease}.au-story-editorial__media:hover>.au-image{transform:scale(1.015)}}
+
+@media(max-width:749px){.au-story-banner--hero .au-story-brand-seal{position:absolute;top:25px;right:7%;margin:0}}

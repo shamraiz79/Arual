@@ -29,7 +29,7 @@
     {% else %}
       <a href="{{ section.settings.collections_link | default: '/#aurel-categories' }}">{{ section.settings.collections_label | escape }}</a>
       <a href="{{ section.settings.journal_link | default: '/#aurel-journal' }}">{{ section.settings.journal_label | escape }}</a>
-      <a href="{{ section.settings.story_link | default: '/#aurel-story' }}">{{ section.settings.story_label | escape }}</a>
+      <a {% if template.suffix == 'our-story' %}aria-current="page"{% endif %} href="{{ section.settings.story_link | default: pages['our-story'].url | default: '/#aurel-story' }}">{{ section.settings.story_label | escape }}</a>
     {% endif %}
   </nav>
   <div class="au-header-actions">

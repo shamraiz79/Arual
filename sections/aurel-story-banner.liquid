@@ -1,0 +1,97 @@
+{% liquid
+  assign fallback = 'aurel-story-hero.png'
+  if section.settings.layout == 'commitment'
+    assign fallback = 'aurel-olive.jpg'
+  endif
+%}
+<section class="au au-story-banner au-story-banner--{{ section.settings.layout }}" {% if section.settings.layout == 'commitment' %}id="our-impact"{% endif %} aria-labelledby="story-banner-{{ section.id }}">
+  {% render 'aurel-image', image: section.settings.image, fallback: fallback, alt: section.settings.image_alt, eager: true, sizes: '100vw' %}
+  <div class="au-story-banner__copy">
+    <p class="au-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {% if section.settings.layout == 'hero' %}<h1 id="story-banner-{{ section.id }}">{{ section.settings.heading | escape | newline_to_br }}</h1>{% else %}<h2 id="story-banner-{{ section.id }}">{{ section.settings.heading | escape | newline_to_br }}</h2>{% endif %}
+    {% if section.settings.layout == 'hero' %}<span class="au-rule"></span>{% endif %}
+    <p class="au-story-banner__description">{{ section.settings.text | escape }}</p>
+    {% if section.settings.button != blank %}<a class="au-button" href="{{ section.settings.link | default: '#story-stats' }}">{{ section.settings.button | escape }} <span aria-hidden="true">&rarr;</span></a>{% endif %}
+  </div>
+  {% if section.settings.note != blank %}<p class="au-story-banner__note">{{ section.settings.note | escape | newline_to_br }}</p>{% endif %}
+  {% if section.settings.show_seal == true %}{% render 'aurel-story-seal', id: section.id %}{% endif %}
+</section>
+{% schema %}
+{
+  "name": "Story — banner",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "hero",
+          "label": "Opening hero"
+        },
+        {
+          "value": "commitment",
+          "label": "Commitment banner"
+        }
+      ],
+      "default": "hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "The included sample photograph is shown until you select your own."
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image description",
+      "default": "Warm sunlight on natural ceramics and olive branches"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Our story"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "A More\nIntentional\nTomorrow."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "A story of thoughtful choices, timeless design, and a deeper care for the spaces we call home."
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Button destination"
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Decorative note"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_seal",
+      "label": "Show circular brand seal",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story — banner"
+    }
+  ]
+}
+{% endschema %}

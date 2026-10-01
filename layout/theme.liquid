@@ -30,20 +30,21 @@
     {% endif %}
 
     {{ content_for_header }}
-    {% if request.page_type == 'index' %}
+    {% if request.page_type == 'index' or template.suffix == 'our-story' %}
       {{ 'aurel.css' | asset_url | stylesheet_tag }}
+      {% if template.suffix == 'our-story' %}{{ 'aurel-our-story.css' | asset_url | stylesheet_tag }}{% endif %}
       <script src="{{ 'aurel.js' | asset_url }}" defer="defer"></script>
     {% endif %}
   </head>
 
-  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+  <body class="{% if template.suffix == 'our-story' %}au-story-page {% endif %}page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
 
     {% render 'chat-drawer' %}
 
     <div class="page-wrapper">
       <div id="header-group">
-        {% if request.page_type == 'index' %}
+        {% if request.page_type == 'index' or template.suffix == 'our-story' %}
           {% section 'aurel-header' %}
         {% else %}
           {% sections 'header-group' %}
@@ -169,7 +170,7 @@
       </main>
 
       <footer>
-        {% if request.page_type == 'index' %}
+        {% if request.page_type == 'index' or template.suffix == 'our-story' %}
           {% section 'aurel-footer' %}
         {% else %}
           {% sections 'footer-group' %}

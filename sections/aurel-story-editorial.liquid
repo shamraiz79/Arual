@@ -1,0 +1,148 @@
+{% liquid
+  assign fallback = 'aurel-story-craft.png'
+  if section.settings.scene == 'nature'
+    assign fallback = 'aurel-story-nature.png'
+  elsif section.settings.scene == 'founder'
+    assign fallback = 'aurel-story.jpg'
+  endif
+%}
+<section class="au au-story-editorial au-story-editorial--{{ section.settings.scene }} au-story-editorial--{{ section.settings.image_side }}" id="{{ section.settings.anchor | default: section.id | handleize }}" aria-labelledby="story-editorial-{{ section.id }}">
+  <div class="au-story-editorial__media">
+    {% render 'aurel-image', image: section.settings.image, fallback: fallback, alt: section.settings.image_alt, sizes: '(min-width: 750px) 55vw, 100vw' %}
+    {% if section.settings.caption != blank %}<p class="au-story-editorial__caption">{{ section.settings.caption | escape | newline_to_br }}</p>{% endif %}
+    {% if section.settings.quote != blank %}<blockquote class="au-story-editorial__quote">{{ section.settings.quote | escape }}</blockquote>{% endif %}
+  </div>
+  <div class="au-story-editorial__copy">
+    <p class="au-eyebrow">{{ section.settings.eyebrow | escape | newline_to_br }}</p>
+    <h2 id="story-editorial-{{ section.id }}">{{ section.settings.heading | escape | newline_to_br }}</h2>
+    <div class="au-story-prose">{{ section.settings.text }}</div>
+    {% if section.settings.signature != blank %}
+      <span class="au-rule"></span><p class="au-story-signature">{{ section.settings.signature | escape }}</p>
+      <p class="au-story-founder-name">{{ section.settings.founder_name | escape }}</p><p class="au-story-founder-role">{{ section.settings.founder_role | escape }}</p>
+    {% endif %}
+    {% if section.settings.button != blank %}<a class="{% if section.settings.scene == 'nature' %}au-text-link{% else %}au-button{% endif %}" href="{{ section.settings.link | default: '#our-values' }}">{{ section.settings.button | escape }} <span aria-hidden="true">&rarr;</span></a>{% endif %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Story - image and text",
+  "settings": [
+    {
+      "type": "select",
+      "id": "scene",
+      "label": "Sample photograph",
+      "options": [
+        {
+          "value": "craft",
+          "label": "Arranging olive branches"
+        },
+        {
+          "value": "nature",
+          "label": "Mediterranean countryside"
+        },
+        {
+          "value": "founder",
+          "label": "Founder portrait"
+        }
+      ],
+      "default": "craft"
+    },
+    {
+      "type": "select",
+      "id": "image_side",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "The included sample photograph is shown until you select your own."
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image description",
+      "default": "Thoughtful materials and natural inspiration"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Section anchor",
+      "default": "our-journey"
+    },
+    {
+      "type": "textarea",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "It started with a simple belief"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Beautiful Spaces\nCan Create a Happier,\nHealthier You."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Body",
+      "default": "<p>Aurél was founded on the idea that the objects we surround ourselves with matter. They shape how we feel, how we live, and the kind of future we create.</p><p>What began as a small collection of carefully chosen home essentials has grown into a purpose-driven brand, inspired by nature, designed for everyday life, and made to last.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "caption",
+      "label": "Image caption"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Image quote"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Button destination"
+    },
+    {
+      "type": "header",
+      "content": "Founder signature"
+    },
+    {
+      "type": "text",
+      "id": "signature",
+      "label": "Signature"
+    },
+    {
+      "type": "text",
+      "id": "founder_name",
+      "label": "Founder name"
+    },
+    {
+      "type": "text",
+      "id": "founder_role",
+      "label": "Founder role"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story - image and text"
+    }
+  ]
+}
+{% endschema %}
