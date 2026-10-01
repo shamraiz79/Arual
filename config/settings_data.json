@@ -107,6 +107,162 @@
       "foreground": "#000000",
       "color1": "#333333",
       "color2": "#DFDFDF"
+    },
+    "sections": {
+      "aurel-header": {
+        "type": "aurel-header",
+        "settings": {
+          "brand": "AURÉL",
+          "announcement": "COMPLIMENTARY SHIPPING ON ORDERS OVER $75  |  30-DAY RETURNS",
+          "enable_mega": true,
+          "shop_label": "Shop",
+          "collections_label": "Collections",
+          "journal_label": "Journal",
+          "story_label": "Our Story",
+          "category_heading": "Shop by category",
+          "featured_heading": "Featured collections",
+          "quick_heading": "Quick links",
+          "menu_note": "Thoughtful choices for a kinder tomorrow.",
+          "promo_eyebrow": "A more beautiful tomorrow",
+          "promo_heading": "Curated for a Kinder Home.",
+          "promo_button": "Explore All Products"
+        },
+        "blocks": {
+          "sample_category_1": {
+            "type": "category",
+            "settings": {
+              "title": "Home Essentials",
+              "description": "Everyday living, elevated."
+            }
+          },
+          "sample_category_2": {
+            "type": "category",
+            "settings": {
+              "title": "Candles & Fragrance",
+              "description": "Scents for a calmer home."
+            }
+          },
+          "sample_category_3": {
+            "type": "category",
+            "settings": {
+              "title": "Textiles",
+              "description": "Softness in every detail."
+            }
+          },
+          "sample_category_4": {
+            "type": "category",
+            "settings": {
+              "title": "Tabletop & Dining",
+              "description": "For more intentional meals."
+            }
+          },
+          "sample_category_5": {
+            "type": "category",
+            "settings": {
+              "title": "Decor & Objects",
+              "description": "Pieces that tell a story."
+            }
+          },
+          "sample_category_6": {
+            "type": "category",
+            "settings": {
+              "title": "Bags & Everyday Carry",
+              "description": "Beautiful function, always."
+            }
+          },
+          "sample_featured_7": {
+            "type": "featured",
+            "settings": {
+              "title": "The Essentials",
+              "description": "Timeless pieces for everyday living.",
+              "button": "Shop Now"
+            }
+          },
+          "sample_featured_8": {
+            "type": "featured",
+            "settings": {
+              "title": "The Autumn Collection",
+              "description": "Warm textures for meaningful moments.",
+              "button": "Shop Now"
+            }
+          },
+          "sample_featured_9": {
+            "type": "featured",
+            "settings": {
+              "title": "New Arrivals",
+              "description": "Fresh pieces for a brighter tomorrow.",
+              "button": "Shop Now"
+            }
+          },
+          "sample_quick_link_10": {
+            "type": "quick_link",
+            "settings": {
+              "title": "Best Sellers",
+              "link": "/collections/all"
+            }
+          },
+          "sample_quick_link_11": {
+            "type": "quick_link",
+            "settings": {
+              "title": "New Arrivals",
+              "link": "/collections/all"
+            }
+          },
+          "sample_quick_link_12": {
+            "type": "quick_link",
+            "settings": {
+              "title": "Gift Cards",
+              "link": "/collections/all"
+            }
+          },
+          "sample_quick_link_13": {
+            "type": "quick_link",
+            "settings": {
+              "title": "The Journal",
+              "link": "/#aurel-journal"
+            }
+          },
+          "sample_quick_link_14": {
+            "type": "quick_link",
+            "settings": {
+              "title": "Sustainability",
+              "link": "/#aurel-story"
+            }
+          },
+          "sample_quick_link_15": {
+            "type": "quick_link",
+            "settings": {
+              "title": "Our Story",
+              "link": "/#aurel-story"
+            }
+          },
+          "sample_quick_link_16": {
+            "type": "quick_link",
+            "settings": {
+              "title": "Sale",
+              "link": "/collections/all"
+            }
+          }
+        },
+        "block_order": [
+          "sample_category_1",
+          "sample_category_2",
+          "sample_category_3",
+          "sample_category_4",
+          "sample_category_5",
+          "sample_category_6",
+          "sample_featured_7",
+          "sample_featured_8",
+          "sample_featured_9",
+          "sample_quick_link_10",
+          "sample_quick_link_11",
+          "sample_quick_link_12",
+          "sample_quick_link_13",
+          "sample_quick_link_14",
+          "sample_quick_link_15",
+          "sample_quick_link_16"
+        ]
+      }
     }
   },
   "presets": {

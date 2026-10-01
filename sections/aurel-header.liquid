@@ -4,27 +4,392 @@
 </div>
 <header class="au au-header">
   <a class="au-logo" href="{{ routes.root_url }}" aria-label="Aurél home">{{ section.settings.brand | escape }}</a>
-  <nav class="au-desktop-nav" aria-label="Main navigation">
-    {% if section.settings.menu != blank %}
-      {% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}
+  <nav id="aurel-navigation-{{ section.id }}" class="au-main-nav" aria-label="Main navigation">
+    {% if section.settings.enable_mega %}
+      <details class="au-shop-menu">
+        <summary>{{ section.settings.shop_label | escape }} <span class="au-menu-chevron" aria-hidden="true"></span></summary>
+        {% render 'aurel-mega-menu', section: section %}
+      </details>
     {% else %}
-      <a href="{{ routes.all_products_collection_url }}">Shop</a><a href="#aurel-categories">Collections</a><a href="#aurel-journal">Journal</a><a href="#aurel-story">About</a>
+      <a href="{{ section.settings.shop_link | default: routes.all_products_collection_url }}">{{ section.settings.shop_label | escape }}</a>
+    {% endif %}
+    {% if section.settings.menu != blank %}
+      {% for link in section.settings.menu.links %}
+        {% if link.links != blank %}
+          <details class="au-nav-dropdown"><summary>{{ link.title | escape }} <span class="au-menu-chevron" aria-hidden="true"></span></summary>
+            <div class="au-nav-submenu">
+              {% for child in link.links %}
+                <a href="{{ child.url }}">{{ child.title | escape }}</a>
+                {% for grandchild in child.links %}<a class="au-nav-grandchild" href="{{ grandchild.url }}">{{ grandchild.title | escape }}</a>{% endfor %}
+              {% endfor %}
+            </div>
+          </details>
+        {% else %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endif %}
+      {% endfor %}
+    {% else %}
+      <a href="{{ section.settings.collections_link | default: '/#aurel-categories' }}">{{ section.settings.collections_label | escape }}</a>
+      <a href="{{ section.settings.journal_link | default: '/#aurel-journal' }}">{{ section.settings.journal_label | escape }}</a>
+      <a href="{{ section.settings.story_link | default: '/#aurel-story' }}">{{ section.settings.story_label | escape }}</a>
     {% endif %}
   </nav>
   <div class="au-header-actions">
     <a href="{{ routes.search_url }}" aria-label="Search the store">{% render 'aurel-icon', icon: 'search' %}</a>
     {% if shop.customer_accounts_enabled %}<a href="{{ routes.account_url }}" aria-label="My account">{% render 'aurel-icon', icon: 'account' %}</a>{% endif %}
     <a class="au-cart-link" href="{{ routes.cart_url }}" aria-label="Shopping bag, {{ cart.item_count }} items">{% render 'aurel-icon', icon: 'bag' %}<span data-au-cart-count>{{ cart.item_count }}</span></a>
-    <button class="au-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="aurel-mobile-menu">{% render 'aurel-icon', icon: 'menu' %}</button>
+    <button class="au-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="aurel-navigation-{{ section.id }}">{% render 'aurel-icon', icon: 'menu' %}</button>
   </div>
-  <nav id="aurel-mobile-menu" class="au-mobile-nav" aria-label="Mobile navigation" hidden>
-    {% if section.settings.menu != blank %}
-      {% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}
-    {% else %}
-      <a href="{{ routes.all_products_collection_url }}">Shop</a><a href="#aurel-categories">Collections</a><a href="#aurel-journal">Journal</a><a href="#aurel-story">About</a>
-    {% endif %}
-  </nav>
+  <button class="au-menu-backdrop" type="button" aria-label="Close navigation" hidden></button>
 </header>
 {% schema %}
-{"name":"Aurél header","settings":[{"type":"text","id":"brand","label":"Brand","default":"AURÉL"},{"type":"text","id":"announcement","label":"Announcement","default":"COMPLIMENTARY SHIPPING ON ORDERS OVER $75  |  30-DAY RETURNS"},{"type":"link_list","id":"menu","label":"Navigation menu"}]}
+{
+  "name": "Aurél header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand",
+      "label": "Brand",
+      "default": "AURÉL"
+    },
+    {
+      "type": "text",
+      "id": "announcement",
+      "label": "Announcement",
+      "default": "COMPLIMENTARY SHIPPING ON ORDERS OVER $75  |  30-DAY RETURNS"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Additional navigation menu",
+      "info": "Links after Shop. Supports nested links. Leave blank to use the links below; do not repeat Shop in this menu."
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_mega",
+      "label": "Enable Shop mega menu",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "shop_label",
+      "label": "Shop label",
+      "default": "Shop"
+    },
+    {
+      "type": "url",
+      "id": "shop_link",
+      "label": "Shop destination"
+    },
+    {
+      "type": "text",
+      "id": "collections_label",
+      "label": "Collections label",
+      "default": "Collections"
+    },
+    {
+      "type": "url",
+      "id": "collections_link",
+      "label": "Collections destination"
+    },
+    {
+      "type": "text",
+      "id": "journal_label",
+      "label": "Journal label",
+      "default": "Journal"
+    },
+    {
+      "type": "url",
+      "id": "journal_link",
+      "label": "Journal destination"
+    },
+    {
+      "type": "text",
+      "id": "story_label",
+      "label": "Story label",
+      "default": "Our Story"
+    },
+    {
+      "type": "url",
+      "id": "story_link",
+      "label": "Story destination"
+    },
+    {
+      "type": "header",
+      "content": "Mega menu"
+    },
+    {
+      "type": "text",
+      "id": "category_heading",
+      "label": "Category column heading",
+      "default": "Shop by category"
+    },
+    {
+      "type": "text",
+      "id": "featured_heading",
+      "label": "Featured column heading",
+      "default": "Featured collections"
+    },
+    {
+      "type": "text",
+      "id": "quick_heading",
+      "label": "Quick links heading",
+      "default": "Quick links"
+    },
+    {
+      "type": "link_list",
+      "id": "quick_menu",
+      "label": "Quick links menu",
+      "info": "Overrides the Quick link blocks when selected."
+    },
+    {
+      "type": "text",
+      "id": "menu_note",
+      "label": "Small brand note",
+      "default": "Thoughtful choices for a kinder tomorrow."
+    },
+    {
+      "type": "header",
+      "content": "Promotional image"
+    },
+    {
+      "type": "image_picker",
+      "id": "promo_image",
+      "label": "Image",
+      "info": "A sample lifestyle image appears until you select your own image."
+    },
+    {
+      "type": "text",
+      "id": "promo_eyebrow",
+      "label": "Image eyebrow",
+      "default": "A more beautiful tomorrow"
+    },
+    {
+      "type": "text",
+      "id": "promo_heading",
+      "label": "Image heading",
+      "default": "Curated for a Kinder Home."
+    },
+    {
+      "type": "text",
+      "id": "promo_button",
+      "label": "Image link label",
+      "default": "Explore All Products"
+    },
+    {
+      "type": "url",
+      "id": "promo_link",
+      "label": "Image destination"
+    }
+  ],
+  "max_blocks": 24,
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Home Essentials"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Everyday living, elevated."
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Destination override"
+        }
+      ]
+    },
+    {
+      "type": "featured",
+      "name": "Featured collection",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "The Essentials"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Timeless pieces for everyday living."
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "A sample candle, textile or vase photo appears until you choose an image or collection."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Destination override"
+        },
+        {
+          "type": "text",
+          "id": "button",
+          "label": "Link label",
+          "default": "Shop Now"
+        }
+      ]
+    },
+    {
+      "type": "quick_link",
+      "name": "Quick link",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Our Story"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Destination"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "category",
+        "settings": {
+          "title": "Home Essentials",
+          "description": "Everyday living, elevated."
+        }
+      },
+      {
+        "type": "category",
+        "settings": {
+          "title": "Candles & Fragrance",
+          "description": "Scents for a calmer home."
+        }
+      },
+      {
+        "type": "category",
+        "settings": {
+          "title": "Textiles",
+          "description": "Softness in every detail."
+        }
+      },
+      {
+        "type": "category",
+        "settings": {
+          "title": "Tabletop & Dining",
+          "description": "For more intentional meals."
+        }
+      },
+      {
+        "type": "category",
+        "settings": {
+          "title": "Decor & Objects",
+          "description": "Pieces that tell a story."
+        }
+      },
+      {
+        "type": "category",
+        "settings": {
+          "title": "Bags & Everyday Carry",
+          "description": "Beautiful function, always."
+        }
+      },
+      {
+        "type": "featured",
+        "settings": {
+          "title": "The Essentials",
+          "description": "Timeless pieces for everyday living."
+        }
+      },
+      {
+        "type": "featured",
+        "settings": {
+          "title": "The Autumn Collection",
+          "description": "Warm textures for meaningful moments."
+        }
+      },
+      {
+        "type": "featured",
+        "settings": {
+          "title": "New Arrivals",
+          "description": "Fresh pieces for a brighter tomorrow."
+        }
+      },
+      {
+        "type": "quick_link",
+        "settings": {
+          "title": "Best Sellers",
+          "link": "/collections/all"
+        }
+      },
+      {
+        "type": "quick_link",
+        "settings": {
+          "title": "New Arrivals",
+          "link": "/collections/all"
+        }
+      },
+      {
+        "type": "quick_link",
+        "settings": {
+          "title": "Gift Cards",
+          "link": "/collections/all"
+        }
+      },
+      {
+        "type": "quick_link",
+        "settings": {
+          "title": "The Journal",
+          "link": "/#aurel-journal"
+        }
+      },
+      {
+        "type": "quick_link",
+        "settings": {
+          "title": "Sustainability",
+          "link": "/#aurel-story"
+        }
+      },
+      {
+        "type": "quick_link",
+        "settings": {
+          "title": "Our Story",
+          "link": "/#aurel-story"
+        }
+      },
+      {
+        "type": "quick_link",
+        "settings": {
+          "title": "Sale",
+          "link": "/collections/all"
+        }
+      }
+    ]
+  }
+}
 {% endschema %}

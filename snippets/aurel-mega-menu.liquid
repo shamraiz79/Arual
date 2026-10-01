@@ -1,0 +1,44 @@
+<div class="au-mega-menu">
+  <div class="au-mega-categories">
+    <p class="au-eyebrow">{{ section.settings.category_heading | escape }}</p>
+    {% for block in section.blocks %}{% if block.type == 'category' %}
+      <a class="au-mega-category" href="{{ block.settings.link | default: block.settings.collection.url | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
+        <span>{{ block.settings.title | default: block.settings.collection.title | escape }} <span aria-hidden="true">&rarr;</span></span>
+        {% if block.settings.description != blank %}<small>{{ block.settings.description | escape }}</small>{% endif %}
+      </a>
+    {% endif %}{% endfor %}
+  </div>
+  <div class="au-mega-featured">
+    <p class="au-eyebrow">{{ section.settings.featured_heading | escape }}</p>
+    {% assign featured_index = 0 %}
+    {% for block in section.blocks %}{% if block.type == 'featured' %}
+      {% liquid
+        assign featured_index = featured_index | plus: 1
+        assign fallback = 'aurel-candle.jpg'
+        if featured_index == 2
+          assign fallback = 'aurel-textiles.jpg'
+        elsif featured_index == 3
+          assign fallback = 'aurel-olive.jpg'
+        endif
+        assign featured_image = block.settings.image | default: block.settings.collection.featured_image
+      %}
+      <a class="au-mega-feature" href="{{ block.settings.link | default: block.settings.collection.url | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
+        <div class="au-mega-feature-image">{% render 'aurel-image', image: featured_image, fallback: fallback, alt: block.settings.title, sizes: '(min-width: 990px) 11vw, 35vw' %}</div>
+        <div><h3>{{ block.settings.title | default: block.settings.collection.title | escape }}</h3><p>{{ block.settings.description | escape }}</p><span class="au-mega-link">{{ block.settings.button | escape }} <span aria-hidden="true">&rarr;</span></span></div>
+      </a>
+    {% endif %}{% endfor %}
+  </div>
+  <div class="au-mega-quick">
+    <p class="au-eyebrow">{{ section.settings.quick_heading | escape }}</p>
+    {% if section.settings.quick_menu != blank %}
+      {% for link in section.settings.quick_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}
+    {% else %}
+      {% for block in section.blocks %}{% if block.type == 'quick_link' %}<a href="{{ block.settings.link | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>{{ block.settings.title | escape }}</a>{% endif %}{% endfor %}
+    {% endif %}
+    {% if section.settings.menu_note != blank %}<div class="au-mega-note"><span class="au-rule"></span>{% render 'aurel-icon', icon: 'leaf' %}<p>{{ section.settings.menu_note | escape }}</p></div>{% endif %}
+  </div>
+  <a class="au-mega-promo" href="{{ section.settings.promo_link | default: routes.all_products_collection_url }}">
+    {% render 'aurel-image', image: section.settings.promo_image, fallback: 'aurel-olive.jpg', alt: '', sizes: '(min-width: 990px) 27vw, 100vw' %}
+    <div><p class="au-eyebrow">{{ section.settings.promo_eyebrow | escape }}</p><h2>{{ section.settings.promo_heading | escape }}</h2><span class="au-mega-link">{{ section.settings.promo_button | escape }} <span aria-hidden="true">&rarr;</span></span></div>
+  </a>
+</div>

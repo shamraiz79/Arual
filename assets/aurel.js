@@ -5,27 +5,70 @@
       if (header.dataset.initialized) return;
       header.dataset.initialized = 'true';
       const button = header.querySelector('.au-menu-toggle');
-      const menu = header.querySelector('.au-mobile-nav');
+      const menu = header.querySelector('.au-main-nav');
+      const backdrop = header.querySelector('.au-menu-backdrop');
+      const dropdowns = [...menu.querySelectorAll('details')];
+      const desktop = window.matchMedia('(min-width: 990px)');
+      const updateBackdrop = () => {
+        backdrop.style.setProperty('--au-backdrop-top', header.getBoundingClientRect().bottom + 'px');
+        backdrop.hidden = !desktop.matches || !dropdowns.some(item => item.open);
+      };
+      const hoverCapable = window.matchMedia('(hover: hover) and (pointer: fine)');
+      let closeTimer;
+      const cancelClose = () => window.clearTimeout(closeTimer);
+      const closeDropdowns = () => { cancelClose(); dropdowns.forEach(item => { item.open = false; }); updateBackdrop(); };
+      dropdowns.forEach(item => {
+        item.addEventListener('pointerenter', event => {
+          if (!desktop.matches || !hoverCapable.matches || event.pointerType === 'touch') return;
+          cancelClose();
+          dropdowns.forEach(other => { other.open = other === item; });
+          updateBackdrop();
+        });
+        item.addEventListener('pointerleave', event => {
+          if (!desktop.matches || !hoverCapable.matches || event.pointerType === 'touch') return;
+          cancelClose();
+          // Let the pointer cross the small gap between the label and the panel.
+          closeTimer = window.setTimeout(() => { item.open = false; updateBackdrop(); }, 240);
+        });
+      });
       const setOpen = (open) => {
         button.setAttribute('aria-expanded', String(open));
         button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-        menu.hidden = !open;
+        menu.classList.toggle('is-open', open);
+        if (!open) closeDropdowns();
       };
-      button.addEventListener('click', () => setOpen(menu.hidden));
-      menu.addEventListener('click', (event) => {
-        if (event.target.closest('a')) setOpen(false);
+      button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
+      dropdowns.forEach(item => item.addEventListener('toggle', () => {
+        if (item.open) dropdowns.forEach(other => { if (other !== item) other.open = false; });
+        updateBackdrop();
+      }));
+      menu.addEventListener('click', event => { if (event.target.closest('a')) setOpen(false); });
+      const handleKeydown = event => {
+        if (event.key !== 'Escape') return;
+        const openDropdown = dropdowns.find(item => item.open);
+        if (openDropdown) { closeDropdowns(); openDropdown.querySelector('summary').focus(); }
+        else if (menu.classList.contains('is-open')) { setOpen(false); button.focus(); }
+      };
+      header.addEventListener('focusout', () => {
+        requestAnimationFrame(() => { if (!header.contains(document.activeElement)) setOpen(false); });
       });
-      header.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && !menu.hidden) {
-          setOpen(false);
-          button.focus();
-        }
+      // Abort global listeners when Shopify replaces this section in the editor.
+      const controller = new AbortController();
+      const options = { signal: controller.signal };
+      document.addEventListener('keydown', handleKeydown, options);
+      document.addEventListener('click', event => {
+        if (!header.contains(event.target) || event.target === backdrop) setOpen(false);
+      }, options);
+      window.addEventListener('resize', updateBackdrop, options);
+      window.addEventListener('scroll', updateBackdrop, { ...options, passive: true });
+      desktop.addEventListener('change', () => setOpen(false), options);
+      document.addEventListener('shopify:section:unload', event => {
+        if (event.target.contains(header)) { cancelClose(); controller.abort(); }
+      }, options);
+      header.addEventListener('shopify:block:select', event => {
+        const dropdown = event.target.closest('details');
+        if (dropdown) { if (!desktop.matches) setOpen(true); dropdown.open = true; }
       });
-      document.addEventListener('click', (event) => {
-        if (header.isConnected && !header.contains(event.target)) setOpen(false);
-      });
-      const desktop = window.matchMedia('(min-width: 750px)');
-      desktop.addEventListener('change', () => { if (desktop.matches) setOpen(false); });
     });
     root.querySelectorAll('[data-au-testimonials]').forEach((section) => {
       if (section.dataset.initialized) return;
