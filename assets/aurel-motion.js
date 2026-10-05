@@ -33,10 +33,12 @@
       bar.dataset.auMarquee = 'true';
       const windowEl = bar.firstElementChild;
       if (!windowEl) return;
-      const copy = document.createElement('span'); copy.className = 'au-announcement-copy'; copy.textContent = windowEl.textContent;
+      const copy = document.createElement('span'); copy.className = 'au-announcement-copy';
+      [...bar.children].forEach(message => copy.append(message.cloneNode(true)));
       const duplicate = copy.cloneNode(true); duplicate.setAttribute('aria-hidden', 'true');
       const track = document.createElement('span'); track.className = 'au-announcement-track'; track.append(copy, duplicate);
-      windowEl.classList.add('au-announcement-window'); windowEl.replaceChildren(track);
+      const viewport = document.createElement('span'); viewport.className = 'au-announcement-window'; viewport.append(track);
+      bar.replaceChildren(viewport);
     });
     root.querySelectorAll('.au-header').forEach(header => {
       if (header.dataset.auSticky) return;
