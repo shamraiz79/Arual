@@ -55,7 +55,8 @@
     children(root, '.au-newsletter,.au-story-banner__copy,.au-story-editorial__copy,.au-collections-banner__copy');
     root.querySelectorAll('.au-story-line').forEach((el, i) => reveal(el, i * 100));
     root.querySelectorAll('.au-story-content>.au-eyebrow,.au-story-content>p:not(.au-eyebrow),.au-story-content>.au-button').forEach(el => reveal(el, 150));
-    root.querySelectorAll('.au-seasonal-main>.au-image,.au-story-editorial__media').forEach(el => reveal(el, 0, true));
+    // Keep story photographs visible without waiting for a scroll reveal.
+    root.querySelectorAll('.au-seasonal-main>.au-image').forEach(el => reveal(el, 0, true));
     root.querySelectorAll('.au-story-highlight').forEach((el, i) => reveal(el, (i % 4) * 100, false, 15));
     root.querySelectorAll('.au-story,.au-seal:not(.au-seal--still)').forEach(el => parallax.add(el));
     root.querySelectorAll('[data-au-track]').forEach(track => {

@@ -2,15 +2,22 @@
   <div class="au-hero-photo">
     {% render 'aurel-image', image: section.settings.image, fallback: 'aurel-hero.jpg', alt: 'Olive branches, handmade ceramics and candlelight in a sunlit home', eager: true, sizes: '100vw' %}
   </div>
-  <h1 class="au-visually-hidden" id="hero-title-{{ section.id }}">{{ section.settings.heading | default: shop.name | escape }}</h1>
+  <div class="au-hero-content">
+    {% if section.settings.eyebrow != blank %}<p class="au-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+    <h1 id="hero-title-{{ section.id }}">{{ section.settings.heading | default: shop.name | escape | newline_to_br }}</h1>
+    <span class="au-rule" aria-hidden="true"></span>
+    {% if section.settings.text != blank %}<p class="au-hero-description">{{ section.settings.text | escape }}</p>{% endif %}
   <div class="au-hero-actions">
     {% if section.settings.button != blank %}
       <a class="au-button au-hero-primary" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.button | escape }} <span aria-hidden="true">&rarr;</span></a>
     {% endif %}
     {% if section.settings.secondary_button != blank %}
-      <a class="au-button au-hero-secondary" href="{{ section.settings.secondary_link | default: routes.all_products_collection_url }}">{{ section.settings.secondary_button | escape }} <span aria-hidden="true">&rarr;</span></a>
+      <a class="au-hero-secondary" href="{{ section.settings.secondary_link | default: '/#aurel-story' }}"><span class="au-hero-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M7 3 21 12 7 21Z"/></svg></span>{{ section.settings.secondary_button | escape }}</a>
     {% endif %}
   </div>
+  </div>
+  <p class="au-hero-handwriting" aria-hidden="true">Good<br>Spaces<br>Brighter<br><span>Days</span><i></i></p>
+  <div class="au-hero-footer" aria-hidden="true"><span class="au-hero-index">01 <i></i></span><span>A kinder home<br>A brighter tomorrow</span></div>
 </section>
 {% schema %}
 {
@@ -24,8 +31,20 @@
     {
       "type": "textarea",
       "id": "heading",
-      "label": "Accessible heading (visually hidden)",
-      "default": "Objects\nfor a More\nIntentional Life."
+      "label": "Heading",
+      "default": "Objects for a\nMore Intentional\nLife."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Modern living · Timeless values"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Thoughtfully designed essentials for your home, your rituals, and a more meaningful tomorrow."
     },
     {
       "type": "text",

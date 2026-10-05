@@ -12,7 +12,9 @@
     "aurel_hero": {
       "type": "aurel-hero",
       "settings": {
-        "heading": "Objects\nfor a More\nIntentional Life.",
+        "heading": "Objects for a\nMore Intentional\nLife.",
+        "eyebrow": "Modern living · Timeless values",
+        "text": "Thoughtfully designed essentials for your home, your rituals, and a more meaningful tomorrow.",
         "button": "Shop the Collection",
         "link": "shopify://pages/collections",
         "secondary_button": "Our Story",
