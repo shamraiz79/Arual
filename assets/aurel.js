@@ -10,8 +10,15 @@
       const dropdowns = [...menu.querySelectorAll('details')];
       const desktop = window.matchMedia('(min-width: 990px)');
       const updateBackdrop = () => {
-        backdrop.style.setProperty('--au-backdrop-top', header.getBoundingClientRect().bottom + 'px');
+        const headerBottom = header.getBoundingClientRect().bottom;
+        backdrop.style.setProperty('--au-backdrop-top', headerBottom + 'px');
         backdrop.hidden = !desktop.matches || !dropdowns.some(item => item.open);
+        if (desktop.matches) {
+          const hero = document.querySelector('.au-hero');
+          const heroBottom = hero?.getBoundingClientRect().bottom;
+          const bottom = heroBottom > headerBottom ? Math.min(window.innerHeight, heroBottom) : window.innerHeight;
+          header.style.setProperty('--au-mega-height', Math.max(0, (bottom - headerBottom) * .85) + 'px');
+        }
       };
       const hoverCapable = window.matchMedia('(hover: hover) and (pointer: fine)');
       let closeTimer;
@@ -61,6 +68,8 @@
       }, options);
       const headerResize = new ResizeObserver(updateBackdrop);
       headerResize.observe(header);
+      const hero = document.querySelector('.au-hero');
+      if (hero) headerResize.observe(hero);
       document.querySelector('.page-wrapper')?.addEventListener('scroll', updateBackdrop, { ...options, passive: true });
       window.addEventListener('resize', updateBackdrop, options);
       window.addEventListener('scroll', updateBackdrop, { ...options, passive: true });

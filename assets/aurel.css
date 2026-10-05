@@ -205,6 +205,32 @@
 .au-home-page .au-header{height:var(--au-home-header);min-height:var(--au-home-header);padding:24px 5.9%;border:0;background:transparent;color:#f8f5ee}
 .au-home-page #MainContent{margin-top:calc(-1 * var(--au-home-header))}
 .au-home-page .au-header.au-header--compact{height:var(--au-home-header);min-height:var(--au-home-header);background:#fff;color:var(--au-ink);box-shadow:0 1px 0 #29292314}
+.au-header:has(.au-main-nav details[open]),.au-home-page .au-header:has(.au-main-nav details[open]){background:#fff;color:var(--au-ink);box-shadow:0 1px 0 #29292314}
+@media(min-width:990px){
+  .au-mega-menu{height:var(--au-mega-height,calc((100dvh - 149px) * .85));max-height:var(--au-mega-height,calc((100dvh - 149px) * .85));background:#fff;grid-template-columns:1.1fr 1.5fr .7fr 1.25fr;grid-template-rows:minmax(0,1fr);overscroll-behavior:contain;container-type:size;padding-block:clamp(12px,2.5vh,24px);gap:clamp(16px,1.6vw,28px)}
+  .au-mega-menu>div{min-width:0}
+  .au-mega-categories{display:flex;flex-direction:column;justify-content:space-between}
+  .au-mega-featured{display:flex;flex-direction:column;justify-content:space-between}
+  .au-mega-promo{min-height:0}
+  .au-mega-promo h2{font-size:clamp(28px,2.4vw,42px)}
+  .au-mega-categories,.au-mega-featured{gap:8px;padding-right:clamp(12px,1.4vw,24px)}
+  .au-mega-menu .au-eyebrow{margin-bottom:clamp(4px,2cqh,16px)}
+  .au-mega-category,.au-mega-feature{margin-bottom:0}
+  .au-mega-category>span{font-size:clamp(15px,4.5cqh,18px)}
+  .au-mega-category small,.au-mega-feature p{font-size:clamp(10px,3cqh,12px);line-height:1.35}
+  .au-mega-feature{gap:12px;min-height:0}
+  .au-mega-feature-image{height:clamp(52px,24cqh,105px)}
+  .au-mega-feature h3{font-size:clamp(16px,4.8cqh,21px)}
+  .au-mega-link{margin-top:clamp(4px,2cqh,10px);font-size:clamp(10px,3cqh,12px)}
+  .au-mega-quick>a{margin-bottom:clamp(4px,2cqh,10px);font-size:clamp(10px,3cqh,12px)}
+  .au-mega-note{padding-top:10px}
+  .au-mega-note .au-rule{margin-bottom:clamp(6px,3cqh,24px)}
+  .au-mega-note p{font-size:clamp(11px,3.5cqh,14px)}
+  .au-mega-promo>div{padding:clamp(14px,1.5vw,26px)}
+  .au-mega-promo h2{font-size:clamp(24px,8cqh,42px)}
+  .au-mega-promo .au-eyebrow{line-height:1.6}
+  .au-mega-promo .au-mega-link{margin-top:clamp(10px,4cqh,24px)}
+}
 .au-home-page .au-logo{font-size:40px;letter-spacing:.22em}
 .au-home-page .au-main-nav{margin:auto;gap:48px;font:16px Arial,Helvetica,sans-serif}
 .au-home-page .au-header-actions{gap:30px}
