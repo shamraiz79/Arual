@@ -80,3 +80,20 @@
 @media(prefers-reduced-motion:no-preference){.au-story-editorial__media>.au-image{transition:transform 1.2s ease}.au-story-editorial__media:hover>.au-image{transform:scale(1.015)}}
 
 @media(max-width:749px){.au-story-banner--hero .au-story-brand-seal{position:absolute;top:25px;right:7%;margin:0}}
+
+/* Keep the opening story banner within the space below the site header. */
+.au-story-banner--hero{min-height:0;height:min(600px,calc(100svh - 122px));align-items:center}
+.au-story-banner--hero .au-story-banner__copy{padding-top:clamp(24px,5svh,48px);padding-bottom:clamp(24px,5svh,48px)}
+.au-story-banner--hero h1{font-size:clamp(34px,min(5.9vw,9svh),86px)}
+@media(max-width:749px){
+.au-story-banner--hero{height:min(570px,calc(100svh - 116px));align-items:flex-end}
+.au-story-banner--hero .au-story-banner__copy{padding:24px 7% 28px}
+.au-story-banner--hero h1{font-size:clamp(34px,min(10vw,8svh),60px)}
+.au-story-banner--hero .au-story-banner__note{font-size:20px;top:20px}
+}
+@media(max-height:700px){
+.au-story-banner--hero .au-eyebrow{margin-bottom:12px}
+.au-story-banner--hero .au-rule{margin:16px 0}
+.au-story-banner--hero .au-story-banner__description{font-size:14px;line-height:1.45}
+.au-story-banner--hero .au-story-banner__note{font-size:22px}
+}
